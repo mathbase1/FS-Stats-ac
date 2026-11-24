@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Interactive, adaptive Functional Skills Level 1 statistics practice: understand data, read graphs and construct your own charts in vocational contexts.">
+<title>Statistics in Practice · Functional Skills Level 1</title>
+<style>
+:root{color-scheme:light;--bg:#f2f5f7;--panel:#fff;--surface:#f6f9fa;--ink:#172f40;--muted:#526a7c;--line:#d6e1e6;--teal:#087d7c;--teal-ink:#066763;--teal-soft:#e7f5f1;--navy:#102d3f;--white:#fff;--good:#216849;--good-bg:#e8f6ed;--bad:#9b3631;--bad-bg:#fff0ec;--amber:#7e550c;--amber-bg:#fff6df;--focus:#c58419;--overlay:transparent;--strength:0;--reading:1;--shadow:0 12px 32px #102d3f08}
+:root[data-theme=dark]{color-scheme:dark;--bg:#101b24;--panel:#192c39;--surface:#223744;--ink:#edf4f8;--muted:#b9cbd7;--line:#3b5261;--teal:#147f7f;--teal-ink:#96e5d6;--teal-soft:#1c4145;--navy:#0b2232;--good:#a6e6c1;--good-bg:#203f35;--bad:#ffb8ad;--bad-bg:#482c32;--amber:#ffda94;--amber-bg:#433c2d;--focus:#ffd17a;--shadow:none}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.58}button,a,input,select,summary{touch-action:manipulation}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px}h1,h2,h3{line-height:1.2;letter-spacing:-.025em;margin:0 0 .6em}h1{font-size:clamp(2.3rem,5vw,3.6rem)}h2{font-size:1.6rem}h3{font-size:1.1rem}p{margin:0 0 .85rem}a{color:var(--teal-ink)}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0)}.skip{position:absolute;top:-90px;left:12px;background:var(--panel);padding:10px;z-index:2000}.skip:focus{top:8px}.btn{border:1px solid transparent;border-radius:10px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:.65rem 1rem;font-weight:680;line-height:1.3;background:var(--teal);color:#fff;gap:7px;text-decoration:none}.btn:hover:not(:disabled){filter:brightness(.94)}.btn.secondary{background:var(--panel);color:var(--ink);border-color:var(--line)}.btn.quiet{background:transparent;color:var(--muted);padding:.4rem .65rem}.btn.small{font-size:.85rem;min-height:38px}.btn.danger{background:var(--bad);color:var(--panel)}.row{display:flex;align-items:center;flex-wrap:wrap;gap:12px}.between{justify-content:space-between}.muted{color:var(--muted)}.tiny{font-size:.78rem;line-height:1.5;color:var(--muted)}.eyebrow{font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;font-weight:760;color:var(--teal-ink)}.topbar{min-height:76px;padding:14px max(20px,calc((100vw - 1240px)/2));background:var(--panel);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;position:sticky;top:0;z-index:20}.brand{display:flex;align-items:center;gap:11px;font-weight:760;color:var(--ink);text-decoration:none;line-height:1.25}.brand-icon{display:grid;place-items:center;width:44px;height:44px;background:var(--navy);color:white;border-radius:12px;font-size:22px}.brand small{display:block;font-size:.72rem;font-weight:450;color:var(--muted);margin-top:4px}.toolbar{display:flex;gap:6px;align-items:center}.save{font-size:.72rem;max-width:122px;line-height:1.3;color:var(--muted)}.home{max-width:1120px;margin:34px auto 60px;padding:0 24px}.hero{background:var(--navy);color:white;padding:40px;border-radius:24px;display:grid;grid-template-columns:1.25fr 1fr;gap:38px;align-items:center}.hero .eyebrow{color:#9ce1d5}.hero p{color:#d0e0e8;max-width:490px}.hero h1{margin-top:12px}.hero-visual{padding:25px;background:#ffffff09;border:1px solid #ffffff25;border-radius:18px}.mini-tag{font-size:.76rem;color:#b8d8df;font-weight:650}.mini-values{display:flex;gap:8px;margin:15px 0}.mini-values span{flex:1;text-align:center;padding:8px 3px;background:#ffffff14;border-radius:8px;font-weight:700}.mini-equation{background:#e5f4ee;color:#123e3e;border-radius:12px;padding:18px;text-align:center;font-weight:740;font-size:1.2rem}.mini-foot{font-size:.8rem;color:#b9d5df;margin-top:14px}.setup{background:var(--panel);border:1px solid var(--line);border-radius:18px;margin-top:24px;padding:28px;box-shadow:var(--shadow)}.setup-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;margin:22px 0}.setup label,.setting label{display:block;font-size:.9rem;font-weight:700;margin-bottom:7px}select,input[type=text]{padding:.68rem .8rem;border:1.5px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);max-width:100%;min-height:46px}.setup select{width:100%}.route{display:flex;gap:10px;align-items:flex-start;margin:14px 0}.route input{margin-top:6px;width:18px;height:18px;accent-color:var(--teal)}.route label{font-weight:600;margin:0}.route small{display:block;color:var(--muted);font-weight:400}.notice{border-left:3px solid var(--teal);background:var(--teal-soft);padding:13px 17px;border-radius:0 10px 10px 0;font-size:.87rem;line-height:1.6}.notice.warning{border-color:var(--amber);color:var(--amber);background:var(--amber-bg)}.setup-bottom{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:23px}.setup-bottom .btn{min-width:185px}.resume{border:1px solid var(--line);border-radius:12px;background:var(--teal-soft);padding:17px 20px;margin-bottom:20px;display:flex;justify-content:space-between;gap:15px;align-items:center}.resume p{margin:0;font-size:.88rem}.home-note{font-size:.8rem;color:var(--muted);margin:17px 3px 0}.workspace{max-width:1240px;padding:0 22px;margin:27px auto 60px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:25px;align-items:start}.sidebar{padding:21px;background:var(--panel);border:1px solid var(--line);border-radius:16px;position:sticky;top:100px}.sidebar .area-name{font-size:1rem;line-height:1.5;font-weight:700;margin:10px 0}.sidebar hr{border:0;border-top:1px solid var(--line);margin:18px 0}.side-actions{display:grid;gap:9px}.question-area{min-width:0}.question-top{margin-bottom:13px;display:flex;justify-content:space-between;gap:10px;align-items:center}.pill{display:inline-block;font-weight:650;font-size:.76rem;background:var(--teal-soft);color:var(--teal-ink);padding:5px 10px;border-radius:7px}.question-card{background:var(--panel);border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow);overflow:hidden}.q-heading{padding:21px 28px;border-bottom:1px solid var(--line);display:flex;gap:14px;justify-content:space-between;align-items:center;background:var(--surface)}.q-heading h2{font-size:1.35rem;margin:0}.q-body{padding:28px}.prompt{font-size:calc(1.06rem * var(--reading));line-height:1.85}.prompt p:last-child{font-weight:640;margin-top:18px}.paper-note{font-size:.81rem;color:var(--muted);margin:0 0 19px}.choices{display:grid;grid-template-columns:minmax(0,1fr);gap:11px;margin:22px 0}.choice{position:relative;display:flex;align-items:center;gap:13px;border:1.5px solid var(--line);border-radius:11px;padding:14px 16px;cursor:pointer;background:var(--surface);font-size:calc(1rem * var(--reading));line-height:1.55;min-height:62px}.choice input{width:18px;height:18px;flex-shrink:0;accent-color:var(--teal)}.choice .letter{font:700 .82rem/1 system-ui;color:var(--muted);border:1px solid var(--line);border-radius:6px;min-width:27px;height:27px;display:grid;place-items:center;flex-shrink:0}.choice:has(input:checked){border-color:var(--teal);background:var(--teal-soft)}.choice.correct{border-color:var(--good);background:var(--good-bg)}.choice.incorrect{border-color:var(--bad);background:var(--bad-bg)}.choice:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}.choice input:focus-visible{outline:none}.choice:has(input:disabled){cursor:default}.answer-area{margin:24px 0}.answer-area label{display:block;font-weight:660;font-size:.95rem;margin-bottom:8px}.answer-line{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.answer-line input{width:195px;font-size:1.25rem;font-variant-numeric:tabular-nums}.unit{font-weight:650;font-size:.96rem}.tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.validation{color:var(--bad);font-weight:630;margin-top:10px;min-height:1px}.hint{padding:16px 18px;border-radius:11px;background:var(--amber-bg);color:var(--amber);margin-top:16px;font-size:.93rem}.feedback{margin-top:23px;padding:20px;border:1px solid var(--line);border-radius:13px;background:var(--good-bg)}.feedback.bad{background:var(--bad-bg);border-color:var(--bad)}.feedback h3{margin-bottom:9px}.feedback p{font-size:calc(.96rem * var(--reading))}.feedback .correct-answer{border-top:1px solid var(--line);padding-top:12px}.solution{padding:19px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-top:15px;font-size:calc(.93rem * var(--reading))}.solution p{margin:.5rem 0}.solution details summary{font-weight:700;cursor:pointer}.next-row{display:flex;justify-content:flex-end;margin-top:22px}.lesson{background:var(--teal-soft);border:1px solid var(--line);border-radius:12px;padding:21px;margin-bottom:25px;font-size:calc(.96rem * var(--reading))}.lesson h2{font-size:1.5rem;margin-top:5px}.lesson details{border-top:1px solid var(--line);padding-top:10px}.lesson summary{cursor:pointer;font-weight:650}.data-values{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 21px;font-variant-numeric:tabular-nums}.data-value{background:var(--surface);border:1px solid var(--line);padding:10px 14px;min-width:55px;text-align:center;border-radius:9px;font-size:calc(1.12rem * var(--reading));font-weight:700}.data-value.highlight{background:var(--teal-soft);border-color:var(--teal);color:var(--teal-ink)}.table-scroll{max-width:100%;overflow:auto;border:1px solid var(--line);border-radius:10px;margin:18px 0}table{border-collapse:collapse;width:100%;background:var(--panel);font-size:.94rem;text-align:left;font-variant-numeric:tabular-nums}th,td{padding:10px 15px;border-bottom:1px solid var(--line)}thead th{background:var(--surface);color:var(--muted);font-weight:680}tbody th{font-weight:550}tr:last-child>*{border-bottom:0}.bar-figure{padding:22px 14px 10px;margin:22px 0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.bar-chart{display:flex;height:210px;gap:12px;margin:13px 12px 35px 0}.bar-scale{position:relative;flex:0 0 34px;font-size:.78rem}.bar-scale span{position:absolute;right:0;transform:translateY(50%)}.bar-plot{display:flex;gap:10px;flex:1;min-width:0;align-items:end;position:relative;border-bottom:2px solid var(--muted);border-left:1px solid var(--line);background:repeating-linear-gradient(to top,transparent 0,transparent calc(20% - 1px),var(--line) calc(20% - 1px),var(--line) 20%)}.bar-col{position:relative;display:flex;align-items:flex-end;justify-content:center;flex:1;height:100%;min-width:0}.bar{position:relative;background:var(--teal);border-radius:4px 4px 0 0;width:70%;min-height:1px}.bar>span{position:absolute;top:-27px;left:50%;transform:translateX(-50%);font-size:.78rem;font-weight:700;white-space:nowrap;color:var(--ink)}.bar-label{position:absolute;bottom:-27px;left:50%;transform:translateX(-50%);font-size:.8rem}figcaption{font-size:.78rem;text-align:center;color:var(--muted)}.report{background:var(--panel);border:1px solid var(--line);padding:28px;border-radius:18px}.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:23px 0}.score-box{background:var(--surface);border-radius:12px;padding:18px}.score-box strong{display:block;font-size:1.8rem;line-height:1.2;margin-bottom:7px}.score-box span{display:block;color:var(--muted);font-size:.78rem;line-height:1.5}.heat-status{display:inline-block;font-size:.76rem;font-weight:700;padding:5px 8px;border-radius:7px}.heat-status.good{background:var(--good-bg);color:var(--good)}.heat-status.mid{background:var(--amber-bg);color:var(--amber)}.heat-status.bad{background:var(--bad-bg);color:var(--bad)}.target{border:1px solid var(--line);background:var(--surface);padding:16px 18px;border-radius:11px;margin:12px 0}.target p{font-size:.9rem;margin-bottom:0}.review-item{border:1px solid var(--line);border-radius:10px;padding:14px;margin:12px 0}.review-item summary{cursor:pointer;font-size:.88rem;font-weight:680}.review-item .prompt{font-size:.93rem;margin-top:17px}.review-item .solution{font-size:.86rem}.code{font:700 .88rem ui-monospace,monospace;color:var(--teal-ink);white-space:nowrap}.dialog{border:1px solid var(--line);border-radius:18px;padding:0;width:min(680px,calc(100vw - 24px));max-width:calc(100vw - 24px);max-height:88dvh;color:var(--ink);background:var(--panel);box-shadow:0 20px 70px #0004}.dialog::backdrop{background:#0b1e2e99}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 23px;border-bottom:1px solid var(--line)}.dialog-head h2{margin:0;font-size:1.3rem}.dialog-body{padding:23px;max-height:68dvh;overflow:auto}.setting{margin-bottom:22px}.setting select{width:100%}.setting input[type=range]{width:100%;accent-color:var(--teal)}.display-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.source-item{border-top:1px solid var(--line);padding-top:14px;margin-top:16px;font-size:.86rem}.source-item p{margin:4px 0}.footer{max-width:1150px;text-align:center;margin:0 auto 25px;padding:0 20px;font-size:.76rem;color:var(--muted)}.overlay{position:fixed;inset:0;pointer-events:none;z-index:2147483646;background:var(--overlay);opacity:var(--strength)}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);border-radius:10px;background:var(--navy);color:white;padding:11px 18px;max-width:calc(100vw - 24px);font-size:.85rem;z-index:1900}.calc-panel{position:fixed;z-index:40;right:22px;top:100px;width:min(322px,calc(100vw - 24px));border:1.5px solid var(--line);background:var(--panel);box-shadow:0 14px 60px #001a3940;border-radius:15px;padding:0;color:var(--ink)}.calc-head{padding:12px 15px;display:flex;justify-content:space-between;align-items:center;cursor:move;touch-action:none;border-bottom:1px solid var(--line);gap:10px}.calc-head h2{font-size:1.07rem;margin:0}.calc-body{padding:15px}.calc-display{width:100%;text-align:right;font-size:1.4rem!important;font-variant-numeric:tabular-nums;min-height:56px!important;background:var(--surface)!important}.calc-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0}.calc-keys button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:7px;min-height:42px;font-weight:700;font-size:1.1rem}.calc-keys button.op{background:var(--teal-soft)}.calc-keys button.equals{grid-column:1/-1;background:var(--teal);color:#fff}.calc-message{font-size:.75rem;line-height:1.5;min-height:34px}.print-only{display:none}.q-footnote{color:var(--muted);font-size:.75rem;margin-top:12px}.recap-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.recap-tabs .active{background:var(--teal);color:#fff}
+@media(max-width:900px){.workspace{grid-template-columns:175px minmax(0,1fr);gap:18px;padding:0 16px}.sidebar{padding:15px}.hero{gap:23px;padding:30px}.q-heading,.q-body{padding:22px}.save{display:none}.score-grid{grid-template-columns:1fr}.score-box{display:flex;align-items:center;gap:18px}.score-box strong{margin:0;font-size:1.6rem;min-width:75px}.topbar{padding:12px 18px}}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.hero-visual{display:none}.home{padding:0 15px;margin-top:22px}.setup{padding:22px}.workspace{display:block;margin-top:19px;padding:0 13px}.sidebar{position:static;margin-bottom:15px;padding:13px 16px}.sidebar h2,.sidebar hr,.sidebar .paper-side{display:none}.sidebar .area-name{display:inline;font-size:.87rem;margin:0}.side-actions{display:flex;flex-wrap:wrap;margin-top:8px;gap:7px}.side-actions .btn{min-height:35px;font-size:.78rem}.sidebar .eyebrow{display:none}.topbar{min-height:66px}.brand small{font-size:.66rem}.brand{font-size:.93rem}.brand-icon{width:35px;height:35px;font-size:19px}.toolbar{gap:2px}.toolbar .btn{font-size:.75rem;padding:.4rem .55rem;min-height:37px}.setup-grid{grid-template-columns:1fr;gap:16px}.setup-bottom{align-items:stretch;flex-direction:column}.setup-bottom .btn{width:100%}.q-heading,.q-body{padding:19px}.lesson{padding:17px}.question-top{gap:7px}.report{padding:20px}.display-grid{grid-template-columns:1fr}.calc-panel{right:12px;top:85px}.resume{align-items:flex-start;flex-direction:column}.q-heading h2{font-size:1.15rem}}
+@media(max-width:390px){.brand small{display:none}.brand-name{max-width:100px}.toolbar .btn{font-size:.7rem}.topbar{padding:10px}.hero{padding:24px}.hero h1{font-size:2.3rem}.choice{padding:12px 10px;gap:8px}.choice .letter{display:none}.q-body{padding:16px}.data-value{padding:8px 11px;min-width:45px}.bar-chart{gap:7px;margin-right:0}.bar-plot{gap:5px}.bar>span{font-size:.7rem}.bar-figure{padding:16px 8px 8px}.report{padding:17px}.dialog-body{padding:18px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+@media print{html{color-scheme:light}body{background:#fff!important;color:#111!important;font:11pt/1.45 Arial,sans-serif}.topbar,.home,.workspace,.footer,.dialog,.calc-panel,.overlay,.toast,.skip{display:none!important}.print-only{display:block!important}.print-only h1{font-size:20pt}.print-only h2{font-size:14pt}.print-only table{color:#111;background:white;font-size:9pt}.print-only td,.print-only th{padding:7pt;border:1px solid #aaa}.print-only .code{color:#111}.print-only .heat-status{background:none;color:#111}.print-only .score-grid{display:block}.print-only .score-box{display:inline-block;width:30%;color:#111;background:white}.print-only .notice{background:white;color:#111;border:1px solid #aaa;padding:8pt}.print-only .target{background:white;color:#111;border:1px solid #aaa}.print-only .btn,.print-only .review-item,.print-only .review-heading{display:none}.print-only .report{border:0;padding:0;background:white}.print-only .muted,.print-only .tiny,.print-only .eyebrow{color:#444}.print-only tr{break-inside:avoid}.print-only .report-actions{display:none}@page{size:A4;margin:16mm}}
+
+.graph-figure{margin:22px 0;border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:18px 12px 10px;color:var(--ink)}
+.graph-figure .graph-title{font-size:1.05rem;line-height:1.5;font-weight:730;color:var(--ink);text-align:center;margin:0 12px 12px}
+.graph-scroll{max-width:100%;overflow:auto;overscroll-behavior-x:contain;border-radius:8px}
+.graph-scroll:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.graph-read-svg,.graph-edit-canvas{width:100%;min-width:540px;display:block}
+.graph-read-svg,.graph-plot-canvas{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px}
+.graph-tick,.graph-category{font-size:16px;font-weight:550}
+.graph-axis-label{font-size:18px;font-weight:680}
+.graph-instruction{font-size:16px;font-weight:650}
+.graph-editor{border:1px solid var(--line);border-radius:14px;padding:20px;margin:23px 0;background:var(--surface);color:var(--ink)}
+.graph-editor-top{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px}
+.graph-editor label{font-size:.9rem;font-weight:650;line-height:1.45;display:block;min-width:0}
+.graph-editor select,.graph-editor input[type=number]{width:100%;min-height:44px;border:1.5px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;padding:9px 12px;margin-top:7px}
+.graph-editor select{appearance:none;-webkit-appearance:none;padding-right:32px;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 16px) 52%,calc(100% - 11px) 52%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;text-overflow:ellipsis}
+.graph-editor input[aria-invalid=true]{border-color:var(--bad);background:var(--bad-bg)}
+.graph-editor :is(select,input):disabled{opacity:.8;cursor:default}
+.graph-help{font-size:.87rem;line-height:1.6;color:var(--muted);margin:12px 0 16px}
+.graph-edit-canvas{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.graph-plot-canvas{display:block;width:100%;touch-action:none;cursor:crosshair}
+.graph-plot-canvas:focus-visible{outline:3px solid var(--focus);outline-offset:-4px}
+.graph-axis-y{position:absolute;left:3.5%;top:41%;width:230px;transform:translate(-50%,-50%) rotate(-90deg);z-index:2}
+.graph-axis-x{position:absolute;bottom:2.7%;left:55%;width:65%;max-width:430px;transform:translateX(-50%);z-index:2}
+.graph-axis-y select,.graph-axis-x select{margin:0;text-align:center;min-height:44px;border-color:var(--teal);background-color:var(--teal-soft);color:var(--teal-ink);font-size:15px;font-weight:650;padding-left:9px}
+.graph-value-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(106px,1fr));gap:11px;margin-top:17px}
+.graph-value-control{padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--panel)}
+.graph-value-control>span{display:block;min-height:2.7em;font-size:.86rem}
+.graph-editor .graph-value-control input[type=number]{font-size:1rem;font-variant-numeric:tabular-nums;padding:8px;min-width:0}
+.graph-value-control input::placeholder{font-size:.73rem;color:var(--muted)}
+.graph-value-control input[type=range]{width:100%;height:26px;margin:8px 0 0;accent-color:var(--teal);cursor:pointer;display:block}
+.graph-editor-bottom{display:flex;align-items:flex-start;gap:14px;justify-content:space-between;margin-top:15px}
+.graph-editor-bottom .btn{flex-shrink:0}
+.graph-live{font-size:.84rem;line-height:1.5;color:var(--muted);margin:0;max-width:460px}
+.graph-editor[data-disabled=true] .graph-plot-canvas,.graph-editor[data-disabled=true] .graph-pie-edit-svg{cursor:default;touch-action:auto}
+.graph-pie-reading{display:grid;grid-template-columns:minmax(200px,1fr) minmax(150px,.7fr);gap:15px;align-items:center;max-width:650px;margin:auto}
+.graph-pie-read-svg{width:100%;max-width:390px;display:block;margin:auto}
+.graph-key{list-style:none;padding:0;margin:8px 0;display:grid;gap:11px;font-size:.9rem;line-height:1.45}
+.graph-key li{display:flex;align-items:center;gap:10px;padding:7px 8px;border:1px solid transparent;border-radius:8px}
+.graph-key li.active{border-color:var(--line);background:var(--teal-soft)}
+.graph-swatch{background:var(--swatch);width:29px;height:29px;flex:0 0 29px;border-radius:6px;display:grid;place-items:center;color:#fff;font-size:15px;font-weight:750}
+.graph-pie-label{font-size:19px;font-weight:750;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;paint-order:stroke;stroke:#0003;stroke-width:1px;stroke-linejoin:round}
+.graph-pie-grid{display:grid;grid-template-columns:minmax(250px,1fr) minmax(170px,.7fr);gap:15px;align-items:start}
+.graph-pie-edit-svg{width:100%;display:block;touch-action:none;cursor:crosshair;border-radius:10px}
+.graph-pie-edit-svg:focus-visible{outline:3px solid var(--focus);outline-offset:0}
+.graph-degree{font:15px system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.graph-pie-angle-controls{display:grid;gap:11px;margin-top:16px}
+.graph-pie-angle-controls label{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.85rem}
+.graph-angle-input{display:flex;align-items:center;gap:6px;flex:0 0 98px}
+.graph-editor .graph-angle-input input{margin:0;min-width:0;font-size:1rem;padding:8px}
+.graph-figure table caption{padding:12px;font-weight:650;text-align:left}
+@media(max-width:900px){.graph-editor{padding:16px}.graph-pie-grid{grid-template-columns:1fr}.graph-pie-grid>svg{max-width:400px;margin:auto}.graph-pie-grid>.graph-key{grid-template-columns:1fr 1fr}.graph-pie-grid>div{display:grid;grid-template-columns:1fr 1fr;gap:15px}.graph-pie-angle-controls{margin-top:8px}.graph-editor-bottom{flex-wrap:wrap}}
+@media(max-width:620px){.graph-editor-top{grid-template-columns:1fr}.graph-editor{padding:13px;margin-left:-3px;margin-right:-3px}.graph-pie-reading{grid-template-columns:1fr}.graph-pie-reading>.graph-key{grid-template-columns:1fr 1fr;margin:0 8px}.graph-pie-read-svg{max-width:320px}.graph-pie-grid>div{display:block}.graph-pie-grid .graph-key{grid-template-columns:1fr 1fr}.graph-pie-angle-controls{grid-template-columns:1fr 1fr;gap:12px}.graph-pie-angle-controls label{display:block}.graph-angle-input{margin-top:6px;max-width:110px}.graph-value-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.graph-value-control>span{min-height:auto}.graph-editor-bottom .btn{width:100%}.graph-figure{padding:15px 7px 8px}.graph-pie-grid{gap:5px}}
+@media print{.graph-figure,.graph-editor{break-inside:avoid;background:white;border:1px solid #888}.graph-scroll{overflow:visible}.graph-read-svg,.graph-edit-canvas{min-width:0}.graph-editor select{appearance:none;background:white;color:#111}.graph-value-controls input[type=range],.graph-editor-bottom button{display:none}}
+
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23526a7c' stroke-width='2'/%3E%3C/svg%3E");background-position:right 13px center;background-repeat:no-repeat;padding-right:36px!important}.hero-note{font-size:.9rem!important;color:#c7e4e5!important;margin-bottom:0}.hero-chart{width:100%;height:auto;display:block;margin:15px 0 0}.hero .mini-foot{border-top:1px solid #ffffff20;padding-top:12px}.route-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.route-preview>div{display:grid;grid-template-columns:42px 1fr;column-gap:12px;align-items:center}.route-preview strong{font-size:1rem}.route-preview div>span:last-child{grid-column:2;font-size:.84rem;line-height:1.5;color:var(--muted)}.route-dot{grid-row:1/3;display:grid;place-items:center;width:40px;height:44px;background:var(--teal-soft);color:var(--teal-ink);border-radius:10px;font-size:1.2rem;font-weight:650}.workspace{max-width:1370px;grid-template-columns:190px minmax(0,1fr)}.q-body{padding:26px}.q-heading h2{font-size:1.3rem}.question-top{min-height:39px}.question-top .tiny{font-size:.85rem}.brand small,.footer,.q-footnote,.home-note{font-size:.82rem}.tiny{font-size:.84rem}.eyebrow{font-size:.78rem}.q-footnote{line-height:1.55}.prompt{line-height:1.75}.prompt p{margin-bottom:.8rem}.q-section{margin:22px 0}.raw-data{display:flex;flex-wrap:wrap;gap:8px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}.raw-data span{font-variant-numeric:tabular-nums;display:inline-block;padding:5px 9px;border-radius:6px;background:var(--panel);border:1px solid var(--line);min-width:41px;text-align:center}.freq-input{width:105px!important;min-width:70px;padding:8px;border:1px solid var(--line);border-radius:7px;font-size:1rem;background:var(--panel);color:var(--ink)}.data-support{margin:14px 0}.data-support .btn{font-size:.85rem}.feedback-list{list-style:none;padding:0;margin:18px 0;display:grid;gap:8px}.feedback-list li{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:11px 13px;line-height:1.5;font-size:calc(.9rem * var(--reading))}.check-label{display:flex;gap:8px;align-items:baseline;font-weight:700}.check-icon{font-weight:800;flex:0 0 19px}.check-icon.pass{color:var(--good)}.check-icon.fail{color:var(--bad)}.feedback-list p{margin:5px 0 0 27px;font-size:.9rem}.feedback .support-note{font-size:.85rem;color:var(--muted);margin-top:10px}.solution summary{cursor:pointer;font-weight:700}.solution .chart-shell{margin-top:18px}.table-scroll caption{text-align:left;padding:12px 15px;background:var(--surface);font-weight:650;color:var(--ink)}.report-controls{display:flex;flex-wrap:wrap;gap:10px;margin:23px 0}.report h2{margin-top:23px}.report h2:first-child{margin-top:0}.report .heat-status{white-space:nowrap;font-size:.82rem}.legend-entry{margin:0 0 16px;padding-bottom:15px;border-bottom:1px solid var(--line)}.legend-entry:last-child{border-bottom:0}.legend-entry dt{font-weight:750;color:var(--teal-ink);font-size:1.1rem}.legend-entry dd{margin:5px 0 0}.graph-checklist{padding-left:24px}.graph-checklist li{margin:12px 0;padding-left:4px}.checklist-card{padding:17px;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:18px}.checklist-card h3{margin-bottom:9px}.checklist-card p{margin:7px 0}.lesson .eyebrow{font-size:.77rem}.lesson h3{font-size:1.25rem}.lesson p:last-child{margin:0}.action-row{display:flex;gap:10px;flex-wrap:wrap}.review-item summary{font-size:.93rem}.empty-note{padding:28px;background:var(--surface);border:1px dashed var(--line);border-radius:10px}.print-only .heat-status{white-space:normal}.new-round{display:flex;gap:12px;align-items:center}.validation:empty{margin:0}.table-scroll input:disabled{color:var(--ink);opacity:.85}.reading-visual{margin:20px 0}.hero .mini-tag{font-size:.85rem}.sidebar .side-actions .btn{font-size:.88rem}.feedback h3:focus{outline:none}.q-body form{margin:0}.print-only .score-box{vertical-align:top}.graph-help-note{color:var(--muted);font-size:.88rem;margin:12px 0}.chart-scale-note{font-size:.85rem}.topbar .save{font-size:.8rem}
+@media(max-width:980px){.workspace{grid-template-columns:165px minmax(0,1fr);gap:16px}.sidebar{padding:14px}.route-preview{gap:10px}.route-preview>div{grid-template-columns:35px 1fr;column-gap:8px}.route-dot{width:34px}.q-body{padding:21px}}
+@media(max-width:700px){.workspace{display:block}.route-preview{grid-template-columns:1fr;gap:17px}.route-preview>div{grid-template-columns:42px 1fr}.route-dot{width:40px}.q-body{padding:18px}.topbar{flex-wrap:wrap}.brand-name{font-size:.95rem}.toolbar{margin-left:auto}.question-top{align-items:flex-start}.setup .tiny{font-size:.87rem}.report-controls .btn{flex:1 1 auto}.report th,.report td{padding:9px 10px;font-size:.85rem}.new-round{flex-wrap:wrap}.hero{padding:30px}.hero h1{font-size:2.7rem}.sidebar .side-actions .btn{font-size:.81rem}}
+@media print{.print-only .report-controls,.print-only .new-round{display:none}.print-only .score-grid{display:flex}.print-only .score-box{width:32%;padding:8px}.print-only .score-box span{font-size:9pt}.print-only .score-box strong{font-size:17pt}.print-only .report-note{font-size:10pt}.print-only .report table{font-size:9pt}.print-only .report td,.print-only .report th{padding:6pt}}
+
+.question-area{scroll-margin-top:100px}.reading-visual .graph-figure{max-width:850px;margin-left:auto;margin-right:auto}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to activity</a>
+<header class="topbar"><a class="brand" href="#" id="homeButton"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 32 32" width="28" height="28"><path d="M5 25V15h5v10M14 25V6h5v19M23 25V11h5v14" fill="currentColor"/></svg></span><span class="brand-name">Statistics in Practice<small>Functional Skills Maths · Level 1</small></span></a><div class="toolbar"><span class="save" id="saveStatus" role="status">Works offline</span><button class="btn secondary small" id="displayButton" type="button">Display</button><button class="btn quiet small" id="aboutButton" type="button">Teacher &amp; sources</button></div></header>
+<main id="main" tabindex="-1">
+<section class="home" id="home">
+<div class="resume" id="resumeBanner" hidden><div><strong>Pick up where you left off.</strong><p id="resumeText"></p></div><button class="btn" id="resumeButton" type="button">Resume activity</button></div>
+<div class="hero"><div><div class="eyebrow">Read it. Build it. Understand it.</div><h1>Make data<br>make sense.</h1><p>Understand the words.<br>Read the story in a graph.<br>Build clear charts from real-world data.</p><p class="hero-note">One question at a time.<br>Fresh practice shaped by your answers.</p></div><div class="hero-visual" aria-hidden="true"><div class="mini-tag">A clear graph tells a story</div><svg class="hero-chart" viewBox="0 0 330 190"><g stroke="#ffffff25" stroke-width="1"><path d="M37 30H311M37 65H311M37 100H311M37 135H311"/></g><path d="M37 20V157H315" fill="none" stroke="#b8d8df" stroke-width="2"/><g fill="#90d9cb"><rect x="62" y="100" width="42" height="56" rx="3"/><rect x="143" y="44" width="42" height="112" rx="3"/><rect x="224" y="72" width="42" height="84" rx="3"/></g><g font-family="system-ui" font-size="14" fill="#e8f6f4" text-anchor="middle"><text x="83" y="180">Mon</text><text x="164" y="180">Tue</text><text x="245" y="180">Wed</text></g></svg><div class="mini-foot">A useful title.<br>Clear labels and units.<br>An even scale and accurate plotting.</div></div></div>
+<section class="setup"><h2>Choose your vocational area</h2><p class="muted">Practise with situations connected to what you study.</p><div class="setup-grid"><div><label for="areaSelect">What are you studying?</label><select id="areaSelect"><option value="">Choose an area…</option></select></div><div><label for="sizeSelect">Practice after the introduction</label><select id="sizeSelect"><option value="12">12 questions</option><option value="24" selected>24 questions</option><option value="40">40 questions</option></select></div></div><div class="route-preview"><div><span class="route-dot" aria-hidden="true">Aa</span><strong>Understand</strong><span>Definitions and graph essentials</span></div><div><span class="route-dot" aria-hidden="true"><svg width="25" height="24" viewBox="0 0 24 24"><path d="M4 19V5M4 19H21M7 14l4-5 4 3 5-7" stroke="currentColor" fill="none" stroke-width="2"/></svg></span><strong>Read</strong><span>Tables, charts and practical decisions</span></div><div><span class="route-dot" aria-hidden="true">✎</span><strong>Draw</strong><span>Label axes, choose scales and plot</span></div></div><div class="setup-bottom"><div class="tiny">Begin with eight guided definition checks.<br>Then practise with different numbers and question styles.<br>Use paper for any working.</div><button class="btn" id="startButton" type="button">Start activity</button></div><div class="validation" id="homeError" role="alert"></div></section><p class="home-note">Original exam-style practice aligned to Pearson Edexcel Functional Skills Level 1.<br>Includes bar charts, line graphs, pie charts, frequency tables, mean and range.</p>
+</section>
+<section class="workspace" id="workspace" hidden><aside class="sidebar"><div class="eyebrow">Your vocational area</div><div class="area-name" id="areaName"></div><p class="tiny paper-side">Use paper for your working.<br>Answer or build the graph here.</p><hr><div class="side-actions"><button class="btn secondary" id="definitionsButton" type="button">Definitions</button><button class="btn secondary" id="graphGuideButton" type="button">Graph checklist</button><button class="btn secondary" id="reportButton" type="button">View report</button><button class="btn quiet" id="pauseButton" type="button">Pause / new round</button></div></aside><div class="question-area" id="questionHost"></div></section>
+</main>
+<footer class="footer">Practice saves on this device when browser storage is available.<br><button class="btn quiet small" id="clearButton" type="button">Clear this learner’s practice</button><button class="btn quiet small" id="downloadButton" type="button">Download offline activity</button></footer>
+<dialog class="dialog" id="displayDialog" aria-labelledby="displayTitle"><div class="dialog-head"><h2 id="displayTitle">Display options</h2><button class="btn secondary small" data-close="displayDialog" type="button">Close</button></div><div class="dialog-body"><div class="display-grid"><div class="setting"><label for="themeSelect">Appearance</label><select id="themeSelect"><option value="light">Light</option><option value="dark">Dark</option></select></div><div class="setting"><label for="overlaySelect">Overlay</label><select id="overlaySelect"><option value="off">Off</option><option value="blue">Blue</option><option value="yellow">Yellow</option><option value="mint">Mint green</option></select></div></div><div class="setting"><label for="overlayStrength">Overlay strength <output id="strengthLabel">12%</output></label><input id="overlayStrength" type="range" min="5" max="25" value="12"></div><div class="setting"><label for="textSelect">Reading size</label><select id="textSelect"><option value="1">Standard</option><option value="1.12">Larger</option><option value="1.24">Largest</option></select></div><p class="tiny">Choose the combination that feels comfortable to read.<br>These choices do not change the questions or results.</p></div></dialog>
+<dialog class="dialog" id="definitionsDialog" aria-labelledby="definitionsTitle"><div class="dialog-head"><h2 id="definitionsTitle">Definitions and examples</h2><button class="btn secondary small" data-close="definitionsDialog" type="button">Close</button></div><div class="dialog-body" id="definitionContent"></div></dialog>
+<dialog class="dialog" id="guideDialog" aria-labelledby="guideTitle"><div class="dialog-head"><h2 id="guideTitle">What makes a clear graph?</h2><button class="btn secondary small" data-close="guideDialog" type="button">Close</button></div><div class="dialog-body" id="guideContent"></div></dialog>
+<dialog class="dialog" id="aboutDialog" aria-labelledby="aboutTitle"><div class="dialog-head"><h2 id="aboutTitle">Teacher notes and sources</h2><button class="btn secondary small" data-close="aboutDialog" type="button">Close</button></div><div class="dialog-body" id="aboutContent"></div></dialog>
+<dialog class="dialog" id="clearDialog" aria-labelledby="clearTitle"><div class="dialog-head"><h2 id="clearTitle">Clear this learner’s practice?</h2><button class="btn secondary small" data-close="clearDialog" type="button">Cancel</button></div><div class="dialog-body"><p>This removes the saved round and results from this browser.</p><p>Your display choices stay in place.</p><button class="btn danger" type="button" id="confirmClear">Clear saved practice</button></div></dialog>
+<section class="calc-panel" id="calculator" hidden aria-labelledby="calcTitle"><div class="calc-head" id="calcHandle"><h2 id="calcTitle">Calculator</h2><button class="btn secondary small" id="closeCalculator" type="button">Close</button></div><div class="calc-body"><label class="sr-only" for="calcInput">Calculation</label><input class="calc-display" id="calcInput" type="text" maxlength="140" autocomplete="off" spellcheck="false" inputmode="text" placeholder="0"><div class="calc-keys" id="calcKeys"></div><div class="calc-message muted" id="calcMessage" role="status">Type or use the buttons.<br>Enter calculates. Escape closes.</div></div></section>
+<div class="overlay" id="overlay" aria-hidden="true"></div><div class="toast" id="toast" role="status" hidden></div><div class="print-only" id="printHost"></div><noscript><p>This activity needs JavaScript enabled in your browser.</p></noscript>
+<script>
+window.STATS_AREAS=[{"id": "health", "label": "Health & Social Care", "place": "activity room", "item": "resource kit", "contexts": [{"id": "health-count", "label": "visitors recorded per session", "unit": "visitors", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "health-time", "label": "waiting times for activity sessions", "unit": "minutes", "period": "task", "lo": 5, "hi": 24, "step": 1, "kind": "measure"}, {"id": "health-measure", "label": "masses of activity-resource boxes", "unit": "kg", "period": "reading", "lo": 2, "hi": 9, "step": 0.1, "kind": "measure"}]}, {"id": "childcare", "label": "Childcare & Early Years", "place": "early-years setting", "item": "activity pack", "contexts": [{"id": "childcare-count", "label": "picture books borrowed per day", "unit": "books", "period": "day", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "childcare-time", "label": "times to prepare play activities", "unit": "minutes", "period": "task", "lo": 8, "hi": 24, "step": 1, "kind": "measure"}, {"id": "childcare-measure", "label": "lengths of craft ribbons", "unit": "cm", "period": "reading", "lo": 12, "hi": 48, "step": 0.1, "kind": "measure"}]}, {"id": "construction", "label": "Construction & Multi-skills", "place": "building workshop", "item": "practice panel", "contexts": [{"id": "construction-count", "label": "practice panels completed per session", "unit": "panels", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "construction-time", "label": "times to prepare work areas", "unit": "minutes", "period": "task", "lo": 10, "hi": 35, "step": 1, "kind": "measure"}, {"id": "construction-measure", "label": "lengths of timber offcuts", "unit": "m", "period": "reading", "lo": 1, "hi": 6, "step": 0.1, "kind": "measure"}]}, {"id": "plumbing", "label": "Plumbing", "place": "plumbing workshop", "item": "practice fitting", "contexts": [{"id": "plumbing-count", "label": "fittings sorted per session", "unit": "fittings", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "plumbing-time", "label": "times to assemble training pipe sections", "unit": "minutes", "period": "task", "lo": 8, "hi": 28, "step": 1, "kind": "measure"}, {"id": "plumbing-measure", "label": "lengths of practice pipes", "unit": "m", "period": "reading", "lo": 1, "hi": 5, "step": 0.1, "kind": "measure"}]}, {"id": "electrical", "label": "Electrical Installation", "place": "electrical training workshop", "item": "practice board", "contexts": [{"id": "electrical-count", "label": "cable labels prepared per session", "unit": "labels", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "electrical-time", "label": "times to assemble practice boards", "unit": "minutes", "period": "task", "lo": 12, "hi": 38, "step": 1, "kind": "measure"}, {"id": "electrical-measure", "label": "lengths of cable on reels", "unit": "m", "period": "reading", "lo": 2, "hi": 10, "step": 0.1, "kind": "measure"}]}, {"id": "carpentry", "label": "Carpentry & Joinery", "place": "carpentry workshop", "item": "wooden component", "contexts": [{"id": "carpentry-count", "label": "wooden components prepared per session", "unit": "components", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "carpentry-time", "label": "times to sand practice pieces", "unit": "minutes", "period": "task", "lo": 5, "hi": 22, "step": 1, "kind": "measure"}, {"id": "carpentry-measure", "label": "lengths of wooden components", "unit": "cm", "period": "reading", "lo": 18, "hi": 65, "step": 0.1, "kind": "measure"}]}, {"id": "bricklaying", "label": "Bricklaying", "place": "brickwork training area", "item": "practice kit", "contexts": [{"id": "bricklaying-count", "label": "practice bricks laid per session", "unit": "bricks", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "bricklaying-time", "label": "times to prepare practice bays", "unit": "minutes", "period": "task", "lo": 10, "hi": 30, "step": 1, "kind": "measure"}, {"id": "bricklaying-measure", "label": "masses of material bags", "unit": "kg", "period": "reading", "lo": 5, "hi": 18, "step": 0.1, "kind": "measure"}]}, {"id": "decorating", "label": "Painting & Decorating", "place": "decorating workshop", "item": "sample board", "contexts": [{"id": "decorating-count", "label": "sample boards finished per session", "unit": "sample boards", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "decorating-time", "label": "times to prepare sample boards", "unit": "minutes", "period": "task", "lo": 6, "hi": 28, "step": 1, "kind": "measure"}, {"id": "decorating-measure", "label": "paint quantities used on sample panels", "unit": "ml", "period": "reading", "lo": 100, "hi": 300, "step": 1, "kind": "measure"}]}, {"id": "motor", "label": "Motor Vehicle", "place": "vehicle workshop", "item": "training job", "contexts": [{"id": "motor-count", "label": "training jobs completed per day", "unit": "jobs", "period": "day", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "motor-time", "label": "times to complete practice inspections", "unit": "minutes", "period": "task", "lo": 15, "hi": 42, "step": 1, "kind": "measure"}, {"id": "motor-measure", "label": "water quantities used in wash trials", "unit": "litres", "period": "reading", "lo": 8, "hi": 28, "step": 0.1, "kind": "measure"}]}, {"id": "engineering", "label": "Engineering", "place": "engineering workshop", "item": "practice component", "contexts": [{"id": "engineering-count", "label": "components checked per session", "unit": "components", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "engineering-time", "label": "times to complete practice assemblies", "unit": "minutes", "period": "task", "lo": 8, "hi": 32, "step": 1, "kind": "measure"}, {"id": "engineering-measure", "label": "lengths of machined practice parts", "unit": "mm", "period": "reading", "lo": 20, "hi": 70, "step": 0.1, "kind": "measure"}]}, {"id": "hair", "label": "Hairdressing & Barbering", "place": "training salon", "item": "practice appointment", "contexts": [{"id": "hair-count", "label": "appointments completed per day", "unit": "appointments", "period": "day", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "hair-time", "label": "times to complete styling practice", "unit": "minutes", "period": "task", "lo": 15, "hi": 50, "step": 1, "kind": "measure"}, {"id": "hair-measure", "label": "shampoo quantities used in training sessions", "unit": "ml", "period": "reading", "lo": 15, "hi": 45, "step": 1, "kind": "measure"}]}, {"id": "beauty", "label": "Beauty Therapy", "place": "beauty training studio", "item": "practice booking", "contexts": [{"id": "beauty-count", "label": "practice bookings per day", "unit": "bookings", "period": "day", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "beauty-time", "label": "times to prepare treatment workstations", "unit": "minutes", "period": "task", "lo": 8, "hi": 25, "step": 1, "kind": "measure"}, {"id": "beauty-measure", "label": "product quantities used in practice sessions", "unit": "ml", "period": "reading", "lo": 10, "hi": 40, "step": 1, "kind": "measure"}]}, {"id": "sport", "label": "Sport & Fitness", "place": "sports centre", "item": "training session", "contexts": [{"id": "sport-count", "label": "participants attending each session", "unit": "participants", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "sport-time", "label": "times for a short training circuit", "unit": "seconds", "period": "task", "lo": 20, "hi": 65, "step": 1, "kind": "measure"}, {"id": "sport-measure", "label": "distances in standing-jump practice", "unit": "m", "period": "reading", "lo": 1, "hi": 3, "step": 0.1, "kind": "measure"}]}, {"id": "public", "label": "Uniformed Public Services", "place": "training centre", "item": "equipment pack", "contexts": [{"id": "public-count", "label": "equipment packs checked per session", "unit": "equipment packs", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "public-time", "label": "times to set up a training exercise", "unit": "minutes", "period": "task", "lo": 10, "hi": 38, "step": 1, "kind": "measure"}, {"id": "public-measure", "label": "masses of training equipment bags", "unit": "kg", "period": "reading", "lo": 4, "hi": 14, "step": 0.1, "kind": "measure"}]}, {"id": "business", "label": "Business & Administration", "place": "office", "item": "sample order", "contexts": [{"id": "business-count", "label": "orders processed per day", "unit": "orders", "period": "day", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "business-time", "label": "times to process sample orders", "unit": "minutes", "period": "task", "lo": 4, "hi": 22, "step": 1, "kind": "measure"}, {"id": "business-measure", "label": "costs of stationery orders", "unit": "£", "period": "reading", "lo": 8, "hi": 45, "step": 0.1, "kind": "money"}]}, {"id": "accounting", "label": "Accounting & Finance", "place": "accounts office", "item": "training record", "contexts": [{"id": "accounting-count", "label": "invoices checked per day", "unit": "invoices", "period": "day", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "accounting-time", "label": "times to check sample invoices", "unit": "minutes", "period": "task", "lo": 5, "hi": 24, "step": 1, "kind": "measure"}, {"id": "accounting-measure", "label": "values of training expense claims", "unit": "£", "period": "reading", "lo": 10, "hi": 65, "step": 0.1, "kind": "money"}]}, {"id": "computing", "label": "Computing & Digital", "place": "IT training lab", "item": "support task", "contexts": [{"id": "computing-count", "label": "support tickets resolved per day", "unit": "support tickets", "period": "day", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "computing-time", "label": "times to complete practice support tasks", "unit": "minutes", "period": "task", "lo": 6, "hi": 32, "step": 1, "kind": "measure"}, {"id": "computing-measure", "label": "sizes of sample files", "unit": "MB", "period": "reading", "lo": 10, "hi": 75, "step": 0.1, "kind": "measure"}]}, {"id": "games", "label": "Games & Animation", "place": "games studio", "item": "digital asset", "contexts": [{"id": "games-count", "label": "game assets checked per session", "unit": "assets", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "games-time", "label": "render times for short test animations", "unit": "seconds", "period": "task", "lo": 20, "hi": 65, "step": 1, "kind": "measure"}, {"id": "games-measure", "label": "sizes of exported animation files", "unit": "MB", "period": "reading", "lo": 15, "hi": 80, "step": 0.1, "kind": "measure"}]}, {"id": "art", "label": "Art, Design & Photography", "place": "creative studio", "item": "mounted print", "contexts": [{"id": "art-count", "label": "prints prepared per session", "unit": "prints", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "art-time", "label": "times to set up photo shoots", "unit": "minutes", "period": "task", "lo": 8, "hi": 30, "step": 1, "kind": "measure"}, {"id": "art-measure", "label": "widths of mounted prints", "unit": "cm", "period": "reading", "lo": 12, "hi": 48, "step": 0.1, "kind": "measure"}]}, {"id": "media", "label": "Media, Film & Special Effects", "place": "media studio", "item": "edited clip", "contexts": [{"id": "media-count", "label": "video clips edited per session", "unit": "clips", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "media-time", "label": "times to prepare recording equipment", "unit": "minutes", "period": "task", "lo": 10, "hi": 32, "step": 1, "kind": "measure"}, {"id": "media-measure", "label": "lengths of short video clips", "unit": "seconds", "period": "reading", "lo": 12, "hi": 50, "step": 0.1, "kind": "measure"}]}, {"id": "music", "label": "Music & Performing Arts", "place": "rehearsal studio", "item": "event ticket", "contexts": [{"id": "music-count", "label": "tickets booked per day", "unit": "tickets", "period": "day", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "music-time", "label": "times to set up rehearsal equipment", "unit": "minutes", "period": "task", "lo": 10, "hi": 35, "step": 1, "kind": "measure"}, {"id": "music-measure", "label": "lengths of short recorded extracts", "unit": "seconds", "period": "reading", "lo": 20, "hi": 75, "step": 0.1, "kind": "measure"}]}, {"id": "animal", "label": "Animal Care", "place": "animal-care training centre", "item": "supply pack", "contexts": [{"id": "animal-count", "label": "supplies packed per session", "unit": "supplies", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "animal-time", "label": "times to prepare training equipment", "unit": "minutes", "period": "task", "lo": 6, "hi": 28, "step": 1, "kind": "measure"}, {"id": "animal-measure", "label": "masses of unopened supply bags", "unit": "kg", "period": "reading", "lo": 2, "hi": 12, "step": 0.1, "kind": "measure"}]}, {"id": "hospitality", "label": "Hospitality & Catering", "place": "training café", "item": "lunch order", "contexts": [{"id": "hospitality-count", "label": "lunch orders prepared per day", "unit": "orders", "period": "day", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "hospitality-time", "label": "waiting times for lunch orders", "unit": "minutes", "period": "task", "lo": 4, "hi": 18, "step": 1, "kind": "measure"}, {"id": "hospitality-measure", "label": "masses of practice bread rolls", "unit": "g", "period": "reading", "lo": 60, "hi": 120, "step": 1, "kind": "measure"}]}, {"id": "travel", "label": "Travel & Tourism", "place": "visitor information centre", "item": "visitor pack", "contexts": [{"id": "travel-count", "label": "visitor enquiries handled per day", "unit": "enquiries", "period": "day", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "travel-time", "label": "times to prepare sample itineraries", "unit": "minutes", "period": "task", "lo": 8, "hi": 30, "step": 1, "kind": "measure"}, {"id": "travel-measure", "label": "lengths of planned walking routes", "unit": "km", "period": "reading", "lo": 2, "hi": 9, "step": 0.1, "kind": "measure"}]}, {"id": "science", "label": "Science", "place": "science training lab", "item": "training sample", "contexts": [{"id": "science-count", "label": "training samples logged per session", "unit": "samples", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "science-time", "label": "times to prepare experiment stations", "unit": "minutes", "period": "task", "lo": 8, "hi": 30, "step": 1, "kind": "measure"}, {"id": "science-measure", "label": "temperatures in a classroom experiment", "unit": "°C", "period": "reading", "lo": 15, "hi": 45, "step": 0.1, "kind": "measure"}]}, {"id": "fashion", "label": "Fashion & Interior Design", "place": "design studio", "item": "fabric sample", "contexts": [{"id": "fashion-count", "label": "fabric items prepared per session", "unit": "items", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "fashion-time", "label": "times to cut practice patterns", "unit": "minutes", "period": "task", "lo": 8, "hi": 32, "step": 1, "kind": "measure"}, {"id": "fashion-measure", "label": "widths of fabric samples", "unit": "cm", "period": "reading", "lo": 15, "hi": 60, "step": 0.1, "kind": "measure"}]}, {"id": "teaching", "label": "Education & Teaching", "place": "learning centre", "item": "resource pack", "contexts": [{"id": "teaching-count", "label": "learning resources prepared per session", "unit": "resources", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "teaching-time", "label": "times to set up learning activities", "unit": "minutes", "period": "task", "lo": 5, "hi": 25, "step": 1, "kind": "measure"}, {"id": "teaching-measure", "label": "costs of classroom-resource orders", "unit": "£", "period": "reading", "lo": 5, "hi": 30, "step": 0.1, "kind": "money"}]}, {"id": "general", "label": "Other / undecided", "place": "college project room", "item": "project pack", "contexts": [{"id": "general-count", "label": "items prepared per session", "unit": "items", "period": "session", "lo": 4, "hi": 32, "step": 1, "kind": "count"}, {"id": "general-time", "label": "times to complete practical tasks", "unit": "minutes", "period": "task", "lo": 6, "hi": 30, "step": 1, "kind": "measure"}, {"id": "general-measure", "label": "masses of project supply boxes", "unit": "kg", "period": "reading", "lo": 2, "hi": 12, "step": 0.1, "kind": "measure"}]}];
+/* Statistics in Practice — original Pearson Edexcel Functional Skills Level 1 practice.
+ * Curriculum references (original generated questions, not copied examination items):
+ * https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/pearson-edexcel-functional-skills-in-maths-spec-l1-l2.pdf
+ * https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/functional-skills-maths-level-1-2-specification-2019-exemplification.pdf
+ * https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/teaching-the-fundamentals-level-1-pie-charts.pdf
+ * https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/functional-skills-maths-level-1-exemplar-set-6-learner-1.pdf
+ */
+(function(root, factory) {
+  const node = typeof module === 'object' && module.exports;
+  const api = factory(node ? require('./areas.json') : (root.STATS_AREAS || []));
+  if (node) module.exports = api;
+  else root.StatsEngine = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function(initialAreas) {
+  'use strict';
+
+  let AREAS = initialAreas;
+  const SOURCES = [
+    {title:'Pearson Edexcel Functional Skills Mathematics specification',url:'https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/pearson-edexcel-functional-skills-in-maths-spec-l1-l2.pdf'},
+    {title:'Pearson specification exemplification',url:'https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/functional-skills-maths-level-1-2-specification-2019-exemplification.pdf'},
+    {title:'Pearson Level 1 pie-chart teaching guidance',url:'https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/teaching-the-fundamentals-level-1-pie-charts.pdf'},
+    {title:'Pearson Level 1 Set 6 marked exemplar',url:'https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/functional-skills-maths-level-1-exemplar-set-6-learner-1.pdf'}
+  ];
+  const SKILLS = [
+    {id:'vocabulary',label:'Words and graph essentials'},
+    {id:'tables',label:'Tables, tallies and grouping'},
+    {id:'bar',label:'Reading bar charts'},
+    {id:'line',label:'Reading line graphs'},
+    {id:'pie',label:'Reading pie charts'},
+    {id:'summary',label:'Mean, range and decisions'},
+    {id:'drawing',label:'Drawing and completing graphs'}
+  ];
+  const FAMILIES = [];
+  const generators = Object.create(null);
+  function add(id,skill,kind,minLevel,fn,graphType) {
+    FAMILIES.push({id,skill,kind,minLevel: minLevel || 1,...(graphType ? {graphType} : {})});
+    generators[id] = fn;
+  }
+  function hash(input) {
+    let n = 2166136261;
+    for (const c of String(input)) { n ^= c.charCodeAt(0); n = Math.imul(n,16777619); }
+    return n >>> 0;
+  }
+  function seeded(seed) {
+    let a = hash(seed === undefined ? 'statistics' : seed);
+    return function() {
+      a += 0x6D2B79F5;
+      let t = a;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  const integer = (r,a,b) => a + Math.floor(r()*(b-a+1));
+  const pick = (r,a) => a[Math.floor(r()*a.length)];
+  function shuffle(r,arr) {
+    const a=arr.slice();
+    for(let i=a.length-1;i>0;i--) {const j=integer(r,0,i);[a[i],a[j]]=[a[j],a[i]];}
+    return a;
+  }
+  const sum = a => a.reduce((s,n)=>s+n,0);
+  const cap = s => String(s).charAt(0).toUpperCase()+String(s).slice(1);
+  const fmt = n => Number(n.toFixed(4)).toLocaleString('en-GB',{maximumFractionDigits:4});
+  function quantity(n,unit) {
+    const singular = {people:'person',supplies:'supply',enquiries:'enquiry'};
+    const label = Number(n)===1 ? (singular[unit] || unit.replace(/s$/,'')) : unit;
+    return `${fmt(n)} ${label}`;
+  }
+  const round = (n,d=2) => Math.round((n+Number.EPSILON)*10**d)/10**d;
+  const approx = (a,b,t=1e-7) => Number.isFinite(a)&&Math.abs(a-b)<=t;
+  function context(area,kind='count') {
+    return area.contexts.find(c=>c.kind===kind) || area.contexts[0];
+  }
+  function base(a) {
+    return {prompt:[],hint:'Read the labels and the question carefully.',explanation:[],calculator:false};
+  }
+  function mc(a,q,correct,wrong,explanation) {
+    q.kind='mcq';
+    q.answer=String(correct);
+    const choices=[{value:String(correct),label:String(correct),why:'This matches the information in the question.'}];
+    for(const w of wrong) {
+      const item = typeof w === 'string' ? {label:w,why:'Check the meaning of the question and the evidence shown.'} : w;
+      if(!choices.some(o=>o.label===String(item.label))) choices.push({value:String(item.label),label:String(item.label),why:item.why});
+    }
+    q.options=shuffle(a.r,choices);
+    q.explanation=explanation || q.explanation;
+    return q;
+  }
+  function numeric(q,answer,unit,explanation,misconceptions=[]) {
+    q.kind='numeric';q.answer=round(answer,6);q.unit=unit||'';q.explanation=explanation;q.misconceptions=misconceptions;
+    return q;
+  }
+  function uniqueValues(r,n,lo,hi) {
+    return shuffle(r,Array.from({length:hi-lo+1},(_,i)=>i+lo)).slice(0,n);
+  }
+  function scaleFor(values,r) {
+    const m=Math.max(...values);
+    const good=[1,2,5,10,20,50,100].filter(s=>s*10>=m&&s*10<=m*2.6);
+    r(); // Keep the seeded question sequence stable while using the clearest scale.
+    return good.length ? good[0] : Math.ceil(m/10);
+  }
+  function dataset(a,kind='bar',n) {
+    const c=context(a.area);
+    const count=n || (a.level===1 ? 4 : 5);
+    const hi=a.level===1?12:a.level===2?28:48;
+    const values=uniqueValues(a.r,count,a.level===1?2:4,hi);
+    if(a.level===3&&a.r()<.2) values[integer(a.r,0,count-1)]=0;
+    const label=cap(c.period);
+    const categories=Array.from({length:count},(_,i)=>`${label} ${i+1}`);
+    const chart={kind,title:cap(c.label),xLabel:label,yLabel:`Number of ${c.unit}`,categories,values,step:scaleFor(values,a.r)};
+    return {c,chart,values,categories,table:{headers:[label,`Number of ${c.unit}`],rows:categories.map((v,i)=>[v,String(values[i])])}};
+  }
+  function scene(a,d) {return `The team in the ${a.area.place} records ${d.c.label}.`;}
+  function grouped(a) {
+    const width=a.level===1?5:pick(a.r,[5,10]);
+    const offset=a.level===3?pick(a.r,[0,5,10]):0;
+    const groups=Array.from({length:4},(_,i)=>({label:`${offset+i*width}–${offset+(i+1)*width-1}`,lo:offset+i*width,hi:offset+(i+1)*width-1}));
+    const counts=Array.from({length:4},()=>integer(a.r,2,a.level===1?4:6));
+    const rawData=shuffle(a.r,groups.flatMap((g,i)=>Array.from({length:counts[i]},(_,j)=>j===0?g.lo:j===1?g.hi:integer(a.r,g.lo,g.hi))));
+    return {width,offset,groups,counts,rawData};
+  }
+  function pieData(a) {
+    const parts=shuffle(a.r,pick(a.r,[[12,6,4,2],[10,6,5,3],[8,7,5,4],[9,8,4,3],[12,5,4,3]]));
+    const factor=a.level===1?1:pick(a.r,[2,3,5]);
+    const categories=['Morning','Midday','Afternoon','Evening'];
+    const counts=parts.map(v=>v*factor),angles=parts.map(v=>v*15);
+    const chart={kind:'pie',title:`Preferred training times in the ${a.area.place}`,categories,values:counts,xLabel:'',yLabel:'',step:1};
+    return {parts,factor,categories,counts,angles,total:sum(counts),chart,table:{headers:['Preferred time','Number of votes'],rows:categories.map((v,i)=>[v,String(counts[i])])}};
+  }
+  const terms=[
+    {word:'data',meaning:'Information that has been collected',wrong:['The answer to every question','Only the title above a graph','A method for multiplying numbers'],hint:'Think about what a survey or a record produces.'},
+    {word:'frequency',meaning:'How many times a value or category occurs',wrong:['The largest value in the data','The difference between the largest and smallest values','The number of column headings'],hint:'Frequency tells you how often something occurs.'},
+    {word:'scale',meaning:'The values represented by equal intervals on an axis',wrong:['The title at the top of a chart','The colour chosen for a bar','The total number of categories'],hint:'Look at the numbered marks along the axis.'},
+    {word:'key',meaning:'An explanation of what the colours or symbols represent',wrong:['The largest sector in a pie chart','The number of grid squares in the graph','The calculation used to find the total'],hint:'A key helps you identify which category a colour or symbol belongs to.'},
+    {word:'sector',meaning:'A slice of a pie chart representing part of the whole',wrong:['The entire horizontal axis','A group of five tally marks','The total of all frequencies'],hint:'Picture one slice of the circle.'},
+    {word:'range',meaning:'The largest value minus the smallest value',wrong:['All values added together','The total divided by the number of values','The number that appears most often'],hint:'Range describes the spread from the smallest value to the largest.'},
+    {word:'mean',meaning:'The total of the values divided by the number of values',wrong:['The largest value minus the smallest value','The largest value in the list','The total of the values without dividing'],hint:'The mean shares the total equally across all the values.'}
+  ];
+
+  add('word_meaning','vocabulary','mcq',1,a=>{
+    const t=pick(a.r,terms),q=base(a);q.prompt=[`What does “${t.word}” mean when working with data?`];q.hint=t.hint;
+    return mc(a,q,t.meaning,t.wrong.map(label=>({label,why:`This is not the meaning of ${t.word}.`})),[`${cap(t.word)} means: ${t.meaning.toLowerCase()}.`]);
+  });
+  add('discrete_data','vocabulary','mcq',1,a=>{
+    const c=context(a.area),q=base(a);q.prompt=[`A team in the ${a.area.place} collects information.`,`Which example is discrete numerical data?`];q.hint='Look for a count that takes separate whole-number values.';
+    return mc(a,q,`The number of ${c.unit} recorded`,[
+      {label:'The exact time taken to complete a task',why:'Time can be measured between whole numbers, so it is continuous.'},
+      {label:'The exact length of a table',why:'Length can be measured between whole numbers, so it is continuous.'},
+      {label:'The exact mass of a supply box',why:'Mass can be measured between whole numbers, so it is continuous.'}
+    ],[`A count of ${c.unit} takes separate whole-number values.`,`That makes it discrete data.`]);
+  });
+  add('choose_graph','vocabulary','mcq',1,a=>{
+    const q=base(a),goal=pick(a.r,['bar','line','pie']);
+    const goals={bar:'compare the number of votes for four separate activities',line:'show how a recorded number changes across six consecutive sessions',pie:'show each choice as a share of all the votes in one survey'};
+    const labels={bar:'Bar chart',line:'Line graph',pie:'Pie chart'};
+    q.prompt=[`A team in the ${a.area.place} wants to ${goals[goal]}.`,`Which diagram best matches that purpose?`];q.hint='Decide whether the purpose is comparing categories, showing change, or showing shares of a whole.';
+    return mc(a,q,labels[goal],Object.entries(labels).filter(([k])=>k!==goal).map(([k,label])=>({label,why:k==='bar'?'Bar charts are particularly useful for comparing separate categories.':k==='line'?'Line graphs show change across an ordered sequence.':'Pie charts show parts of one complete total.'})).concat([{label:'A list of unlabelled numbers',why:'Without labels, the meaning of the numbers is unclear.'}]),[`${labels[goal]} is the best match because the purpose is to ${goals[goal]}.`]);
+  });
+  add('axis_purpose','vocabulary','mcq',1,a=>{
+    const d=dataset(a),q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`What does the vertical axis show?`];q.hint='Read the label beside the upright axis.';
+    return mc(a,q,d.chart.yLabel,[{label:d.chart.xLabel,why:'That belongs to the horizontal axis.'},{label:'The cost of each item',why:'The chart does not show costs.'},{label:'The name of the training area',why:'That provides context, but is not the vertical quantity.'}],[`The vertical axis is labelled “${d.chart.yLabel}”.`,`The height of each bar represents that quantity.`]);
+  });
+  add('equal_scale','vocabulary','mcq',1,a=>{
+    const step=pick(a.r,[2,5,10,20]),q=base(a);q.prompt=['A vertical axis has equally spaced marks.',`Which set of labels gives a consistent scale starting at zero?`];q.hint='The number must increase by the same amount at every equally spaced mark.';
+    const correct=[0,1,2,3,4].map(n=>n*step).join(', ');
+    return mc(a,q,correct,[{label:[0,1,2,4,5].map(n=>n*step).join(', '),why:'One interval increases by twice as much as the others.'},{label:[0,1,3,4,7].map(n=>n*step).join(', '),why:'Equal spaces must represent equal numerical increases.'},{label:[step,step*2,step*3,step*2,step*4].join(', '),why:'A scale must run consistently in one direction, and this one does not start at zero.'}],[`Each interval in the correct scale increases by ${step}.`,`Equal spaces represent equal differences.`]);
+  });
+  add('bar_features','vocabulary','mcq',1,a=>{
+    const q=base(a);q.prompt=['You are drawing a bar chart to compare separate categories.',`Which plan will make the chart clear and accurate?`];q.hint='Think about labels, the number scale, and the way separate bars are drawn.';
+    return mc(a,q,'Label both axes, use an equal numerical scale, and draw equal-width bars with gaps',[
+      {label:'Leave the axes unlabelled and use different widths for different values',why:'Readers need axis labels; changing the width can mislead them about the size of a value.'},
+      {label:'Use a different numerical step for each interval to make all bars fit',why:'Equally spaced scale marks must increase by the same amount.'},
+      {label:'Join the tops of the bars and remove all category labels',why:'A categorical bar chart needs named categories and separate bars.'}
+    ],['Labelled axes tell the reader what the chart represents.','A consistent scale and accurately drawn bars let them compare the values.']);
+  });
+  add('line_features','vocabulary','mcq',1,a=>{
+    const q=base(a);q.prompt=['A line graph will show the number recorded at five consecutive sessions.',`How should the points be connected?`];q.hint='Follow the sessions in the order they happened.';
+    return mc(a,q,'Join consecutive sessions in time order with straight line segments',[
+      {label:'Join the smallest value to the next smallest until the line always rises',why:'That changes the order of the sessions and misrepresents what happened.'},
+      {label:'Join every point directly to every other point',why:'The lines should link consecutive recorded times, not every possible pair.'},
+      {label:'Join only the first and last point and ignore the others',why:'The intermediate values contain information that must be represented.'}
+    ],['Plot each point above its correct time or session.','Join consecutive points in that order.']);
+  });
+  add('units_label','vocabulary','mcq',1,a=>{
+    const q=base(a),c=a.area.contexts.find(v=>v.unit==='minutes')||a.area.contexts[1];q.prompt=[`The team records ${c.label}.`,`Which is the clearest label for the vertical axis?`];q.hint='The label should identify both the quantity and its unit.';
+    return mc(a,q,`Time (${c.unit})`,[{label:'Time',why:'This identifies the quantity but does not state which time unit is used.'},{label:'Number of tasks',why:'That is a count, rather than the duration being measured.'},{label:'Training area',why:'That is the setting, not the measured quantity.'}],[`“Time (${c.unit})” names the measured quantity and gives its unit.`]);
+  });
+
+  add('tally_bundles','tables','numeric',1,a=>{
+    const bundles=integer(a.r,1,a.level+2),singles=integer(a.r,0,4),q=base(a);q.prompt=[`The team in the ${a.area.place} records votes using tally marks.`,`The tally contains ${quantity(bundles,'complete bundles')} of five tally marks and ${quantity(singles,'extra single marks')}.`,`What is the frequency?`];q.hint='Each complete tally bundle counts as five.';
+    return numeric(q,bundles*5+singles,'votes',[`${bundles} × 5 + ${singles} = ${bundles*5+singles}.`,`The frequency is ${bundles*5+singles} votes.`],[{value:bundles+singles,why:'Each complete bundle represents five votes, not one.'},{value:bundles*4+singles,why:'The crossing fifth tally mark belongs to the count too.'}]);
+  });
+  add('frequency_read','tables','numeric',1,a=>{
+    const d=dataset(a),i=integer(a.r,0,d.values.length-1),q=base(a);q.table=d.table;q.prompt=[scene(a,d),`How many ${d.c.unit} were recorded in ${d.categories[i].toLowerCase()}?`];q.hint='Find the requested row, then follow it across to the number column.';
+    return numeric(q,d.values[i],d.c.unit,[`${d.categories[i]} has a frequency of ${d.values[i]}.`]);
+  });
+  add('frequency_total','tables','numeric',1,a=>{
+    const d=dataset(a),q=base(a);q.table=d.table;q.prompt=[scene(a,d),`How many ${d.c.unit} were recorded altogether?`];q.hint='Add all the frequencies, once each.';q.calculator=a.level>1;
+    return numeric(q,sum(d.values),d.c.unit,[`${d.values.join(' + ')} = ${sum(d.values)}.`,`The total is ${sum(d.values)} ${d.c.unit}.`],[{value:d.values.length,why:'You counted the rows; the question asks for the total of the frequencies.'}]);
+  });
+  add('frequency_missing','tables','numeric',2,a=>{
+    const d=dataset(a),i=integer(a.r,0,d.values.length-1),total=sum(d.values),q=base(a);q.table={headers:d.table.headers,rows:d.table.rows.map((r,k)=>[r[0],k===i?'?':r[1]])};q.prompt=[scene(a,d),`There are ${total} ${d.c.unit} in total.`,`Find the missing frequency for ${d.categories[i].toLowerCase()}.`];q.hint='Add the known frequencies, then subtract their total from the overall total.';q.calculator=true;
+    return numeric(q,d.values[i],d.c.unit,[`The known frequencies total ${total-d.values[i]}.`,`${total} − ${total-d.values[i]} = ${d.values[i]}.`],[{value:total-d.values[i],why:'That is the total already recorded; subtract it from the overall total to find what is missing.'}]);
+  });
+  add('group_boundary','tables','mcq',1,a=>{
+    const g=grouped(a),i=integer(a.r,0,3),v=pick(a.r,[g.groups[i].lo,g.groups[i].hi]),q=base(a);q.prompt=[`A team groups whole-number counts of items into intervals.`,`Which group contains the count ${v}?`];q.hint='Both endpoints belong to the displayed whole-number interval.';
+    return mc(a,q,g.groups[i].label,g.groups.filter((_,j)=>j!==i).map(h=>({label:h.label,why:`${v} is not between ${h.lo} and ${h.hi}, inclusive.`})),[`${v} belongs to ${g.groups[i].label} because ${g.groups[i].lo} ≤ ${v} ≤ ${g.groups[i].hi}.`]);
+  });
+  add('group_count','tables','numeric',1,a=>{
+    const g=grouped(a),i=integer(a.r,0,3),q=base(a);q.rawData=g.rawData;q.prompt=[`The team in the ${a.area.place} records a whole-number count for each training task.`,`The counts are shown below.`,`How many counts are in the group ${g.groups[i].label}?`];q.hint=`Count every value from ${g.groups[i].lo} to ${g.groups[i].hi}, including both endpoints.`;
+    const included=g.rawData.filter(v=>v>=g.groups[i].lo&&v<=g.groups[i].hi);
+    return numeric(q,g.counts[i],'counts',[`The values in this group are ${included.join(', ')}.`,`There are ${g.counts[i]} values, so the frequency is ${g.counts[i]}.`],[{value:sum(included),why:'Frequency means how many values are in the group, not their sum.'}]);
+  });
+  add('frequency_build','tables','table',1,a=>{
+    const g=grouped(a),q=base(a);q.kind='table';q.rawData=g.rawData;q.groups=g.groups;q.answer=g.counts;q.prompt=[`The team in the ${a.area.place} records whole-number counts for a set of training tasks.`,`Complete the frequency table using the values shown.`,`Count each value in exactly one group.`];q.hint='Tally the values on paper, then enter the number in each group.';q.explanation=g.groups.map((h,i)=>`${h.label} contains ${g.counts[i]} values.`);q.explanation.push(`The frequencies add to ${g.rawData.length}, matching the number of values.`);return q;
+  });
+  add('group_intervals','tables','mcq',2,a=>{
+    const q=base(a),width=pick(a.r,[5,10]);q.prompt=['A team needs to group whole-number counts from 0 to '+(width*4-1)+'.','Which set of groups has equal sizes with no overlaps and no missing values?'];q.hint='Check each whole-number boundary and how many possible whole numbers are in each group.';
+    const correct=Array.from({length:4},(_,i)=>`${i*width}–${(i+1)*width-1}`).join(', ');
+    return mc(a,q,correct,[{label:Array.from({length:4},(_,i)=>`${i*width}–${(i+1)*width}`).join(', '),why:'Boundary values appear in two groups, so observations could be counted twice.'},{label:`0–${width-2}, ${width}–${2*width-2}, ${2*width}–${3*width-2}, ${3*width}–${4*width-1}`,why:'Some whole-number values are missing between the groups.'},{label:`0–${width-1}, ${width}–${3*width-1}, ${3*width}–${4*width-1}`,why:'The middle group contains twice as many possible whole numbers as the others.'}],[`Each group in the correct list contains ${width} possible whole numbers.`,`Every count from 0 to ${4*width-1} belongs to exactly one group.`]);
+  });
+
+  add('bar_read','bar','numeric',1,a=>{
+    const d=dataset(a),i=integer(a.r,0,d.values.length-1),q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`How many ${d.c.unit} were recorded in ${d.categories[i].toLowerCase()}?`];q.hint='Find the correct bar and read across from its top to the vertical scale.';
+    return numeric(q,d.values[i],d.c.unit,[`The top of the ${d.categories[i].toLowerCase()} bar lines up with ${d.values[i]}.`,`Each major scale interval represents ${quantity(d.chart.step,d.c.unit)}.`],[{value:d.values[i]/d.chart.step,why:'That counts scale intervals; multiply by the value represented by each interval.'}]);
+  });
+  add('bar_difference','bar','numeric',1,a=>{
+    const d=dataset(a),ids=shuffle(a.r,d.values.map((_,i)=>i)).slice(0,2).sort((i,j)=>d.values[j]-d.values[i]),[i,j]=ids,q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`How many more ${d.c.unit} were recorded in ${d.categories[i].toLowerCase()} than in ${d.categories[j].toLowerCase()}?`];q.hint='Read the two values, then subtract the smaller from the larger.';
+    return numeric(q,d.values[i]-d.values[j],d.c.unit,[`${d.categories[i]}: ${d.values[i]}.`,`${d.categories[j]}: ${d.values[j]}.`,`${d.values[i]} − ${d.values[j]} = ${d.values[i]-d.values[j]}.`],[{value:d.values[i]+d.values[j],why:'Adding finds the total; “how many more” asks for the difference.'}]);
+  });
+  add('bar_total','bar','numeric',1,a=>{
+    const d=dataset(a),ids=shuffle(a.r,d.values.map((_,i)=>i)).slice(0,a.level===3?3:2),q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`Find the total recorded in ${ids.map(i=>d.categories[i].toLowerCase()).join(' and ')}.`];q.hint='Read only the requested bars and add their values.';q.calculator=a.level>1;
+    return numeric(q,sum(ids.map(i=>d.values[i])),d.c.unit,[`${ids.map(i=>d.values[i]).join(' + ')} = ${sum(ids.map(i=>d.values[i]))}.`],[{value:sum(d.values),why:'This includes every bar; the question asks for selected bars only.'}]);
+  });
+  add('bar_threshold','bar','numeric',2,a=>{
+    const d=dataset(a),threshold=pick(a.r,d.values.slice().sort((x,y)=>x-y).slice(1,-1)),inclusive=a.r()<.5,q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`The target is ${inclusive?'at least':'more than'} ${threshold} ${d.c.unit} in a ${d.c.period}.`,`How many ${d.c.period}s met the target?`];q.hint=inclusive?'“At least” includes the target itself.':'“More than” does not include a value equal to the target.';
+    const included=d.values.map((v,i)=>({v,i})).filter(o=>inclusive?o.v>=threshold:o.v>threshold),wrong=d.values.filter(v=>inclusive?v>threshold:v>=threshold).length;
+    return numeric(q,included.length,`${d.c.period}s`,[`${inclusive?'At least':'More than'} ${threshold} means ${inclusive?'greater than or equal to':'strictly greater than'} ${threshold}.`,`${included.map(o=>d.categories[o.i]).join(', ')} met the target.`,`That is ${quantity(included.length,`${d.c.period}s`)}.`],[{value:wrong,why:inclusive?'A value equal to the target counts because the wording is “at least”.':'A value equal to the target does not count because the wording is “more than”.'}]);
+  });
+  add('bar_scale','bar','numeric',1,a=>{
+    const d=dataset(a),q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),'How many units does each major interval on the vertical scale represent?'];q.hint='Subtract one numbered scale label from the next numbered label.';
+    return numeric(q,d.chart.step,'units',[`The numbered scale increases by ${d.chart.step} at each major interval.`]);
+  });
+  add('bar_claim','bar','mcq',2,a=>{
+    const d=dataset(a),i=d.values.indexOf(Math.max(...d.values)),j=d.values.indexOf(Math.min(...d.values)),q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),'Which statement is supported by this chart?'];q.hint='Check each statement against the values shown.';
+    return mc(a,q,`${d.categories[i]} has the greatest number`,[{label:`${d.categories[j]} has the greatest number`,why:'This is the shortest bar, so it has the smallest number.'},{label:'Every session has the same number',why:'The bars have different heights.'},{label:'The chart proves the number will increase next time',why:'The chart records these sessions; it does not prove a future result.'}],[`${d.categories[i]} has the tallest bar, representing ${d.values[i]} ${d.c.unit}.`]);
+  });
+  add('bar_target_decision','bar','mcq',2,a=>{
+    const d=dataset(a),i=integer(a.r,0,d.values.length-1),extra=integer(a.r,2,8),target=d.values[i]+extra,q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`The target for ${d.categories[i].toLowerCase()} was ${target} ${d.c.unit}.`,`Which conclusion is correct?`];q.hint='Read the recorded number, compare it with the target, and state the difference.';
+    return mc(a,q,`The target was missed by ${extra} ${d.c.unit}`,[{label:`The target was exceeded by ${extra} ${d.c.unit}`,why:'The recorded number is below the target, not above it.'},{label:'The target was met exactly',why:'The bar does not reach the target value.'},{label:`The target was missed by ${target+d.values[i]} ${d.c.unit}`,why:'Find the gap by subtracting, not by adding the target and recorded number.'}],[`${target} − ${d.values[i]} = ${extra}.`,`The recorded number is below the target, so it was missed by ${extra} ${d.c.unit}.`]);
+  });
+
+  add('line_read','line','numeric',1,a=>{
+    const d=dataset(a,'line'),i=integer(a.r,0,d.values.length-1),q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`Read the number recorded in ${d.categories[i].toLowerCase()}.`];q.hint='Go up from the requested session to its point, then read across to the number scale.';
+    return numeric(q,d.values[i],d.c.unit,[`The point for ${d.categories[i].toLowerCase()} is at ${d.values[i]} ${d.c.unit}.`]);
+  });
+  add('line_change','line','numeric',1,a=>{
+    const d=dataset(a,'line'),i=integer(a.r,0,d.values.length-2),j=i+1,up=d.values[j]>d.values[i],q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`How large was the ${up?'increase':'decrease'} from ${d.categories[i].toLowerCase()} to ${d.categories[j].toLowerCase()}?`];q.hint='Find the two values and subtract the smaller value from the larger to find the size of the change.';
+    return numeric(q,Math.abs(d.values[j]-d.values[i]),d.c.unit,[`The number changed from ${d.values[i]} to ${d.values[j]}.`,`The ${up?'increase':'decrease'} was ${quantity(Math.abs(d.values[j]-d.values[i]),d.c.unit)}.`],[{value:d.values[j],why:'That is the final value; the question asks how much it changed.'},{value:d.values[j]+d.values[i],why:'Adding gives a total, not the size of the change.'}]);
+  });
+  add('line_overall','line','mcq',1,a=>{
+    const d=dataset(a,'line'),first=d.values[0],last=d.values[d.values.length-1],up=last>first,q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),'Compare the first and last recorded sessions.','What happened overall?'];q.hint='An overall change compares the final value with the first value.';
+    return mc(a,q,`It ${up?'increased':'decreased'} overall by ${quantity(Math.abs(last-first),d.c.unit)}`,[{label:`It ${up?'decreased':'increased'} overall by ${quantity(Math.abs(last-first),d.c.unit)}`,why:'Check whether the last point is above or below the first point.'},{label:'There was no overall change',why:'The first and last values are different.'},{label:`The overall change was ${quantity(first+last,d.c.unit)}`,why:'An overall change is a difference, not the sum of the first and last values.'}],[`The first value is ${first} and the last value is ${last}.`,`The number ${up?'increased':'decreased'} overall by ${quantity(Math.abs(last-first),d.c.unit)}.`]);
+  });
+  add('line_largest_change','line','mcq',2,a=>{
+    let d,changes,largest,loops=0;
+    do {d=dataset(a,'line',5);changes=d.values.slice(1).map((v,i)=>Math.abs(v-d.values[i]));largest=Math.max(...changes);loops++;} while(changes.filter(v=>v===largest).length!==1&&loops<100);
+    const i=changes.indexOf(largest),q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),'Between which consecutive sessions was the largest change in either direction?'];q.hint='Compare the size of each change between neighbouring points.';
+    const intervals=changes.map((v,j)=>({label:`${d.categories[j]} to ${d.categories[j+1]}`,why:`The size of this change is ${v}, while the largest change is ${largest}.`}));
+    return mc(a,q,intervals[i].label,intervals.filter((_,j)=>i!==j),[`The consecutive changes have sizes ${changes.join(', ')}.`,`The largest is ${largest}, between ${d.categories[i].toLowerCase()} and ${d.categories[i+1].toLowerCase()}.`]);
+  });
+  add('line_evidence','line','mcq',2,a=>{
+    const d=dataset(a,'line'),q=base(a),last=d.categories[d.categories.length-1];q.chart=d.chart;q.prompt=[scene(a,d),`A learner says the next session must have a higher number than ${last.toLowerCase()}.`,`Which response is justified?`];q.hint='Separate recorded information from a claim about a future result.';
+    return mc(a,q,'The graph does not prove what will happen in the next session',[
+      {label:'The learner must be right because all line graphs keep going upwards',why:'Line graphs can rise, fall or remain level; their shape does not guarantee the future.'},
+      {label:'The next number must be zero because no point is shown',why:'A missing future point means the result is unknown, not zero.'},
+      {label:'The next number must equal the greatest recorded value',why:'The greatest previous value does not determine the next one.'}
+    ],['The graph shows the recorded sessions.','It provides no certain value for the next session.']);
+  });
+  add('line_total','line','numeric',2,a=>{
+    const d=dataset(a,'line',a.level===2?4:5),q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`Find the total number of ${d.c.unit} over all the sessions shown.`];q.hint='Read the value at every plotted point, then add them.';q.calculator=true;
+    return numeric(q,sum(d.values),d.c.unit,[`${d.values.join(' + ')} = ${sum(d.values)}.`,`The total is ${sum(d.values)} ${d.c.unit}.`],[{value:d.values[d.values.length-1],why:'The last point is one session’s value; this graph is not a running total.'}]);
+  });
+
+  add('pie_largest','pie','mcq',1,a=>{
+    const d=pieData(a),i=d.counts.indexOf(Math.max(...d.counts)),q=base(a);q.chart=d.chart;q.prompt=[`People in the ${a.area.place} vote for their preferred training time.`,`Which time received the greatest share of the votes?`];q.hint='Use the key and find the largest sector.';
+    return mc(a,q,d.categories[i],d.categories.filter((_,j)=>j!==i).map(label=>({label,why:'This sector is smaller than the largest sector.'})),[`${d.categories[i]} has the largest sector, so it represents the greatest share of the votes.`]);
+  });
+  add('pie_fraction','pie','mcq',1,a=>{
+    const d=pieData(a),unit=pick(a.r,[4,6,8,12]),index=integer(a.r,0,3),rest=24-unit,other=[Math.floor(rest/3),Math.floor(rest/3),rest-2*Math.floor(rest/3)];d.parts=other.slice();d.parts.splice(index,0,unit);d.counts=d.parts.slice();d.angles=d.parts.map(v=>v*15);d.chart.values=d.counts;d.chart.showAngles=true;
+    const labels={4:'One sixth',6:'One quarter',8:'One third',12:'One half'},q=base(a);q.chart=d.chart;q.prompt=[`The pie chart shows preferred training times in the ${a.area.place}.`,`The ${d.categories[index].toLowerCase()} sector has an angle of ${unit*15}°.`,`What fraction of all the votes does it represent?`];q.hint='Compare the sector angle with 360°, the angle of the full circle.';
+    return mc(a,q,labels[unit],Object.values(labels).filter(v=>v!==labels[unit]).map(label=>({label,why:`The sector is ${unit*15}° out of a full 360° circle.`})),[`${unit*15} ÷ 360 = ${unit}/24.`,`This simplifies to ${labels[unit].toLowerCase()} of the whole.`]);
+  });
+  add('pie_quantity','pie','numeric',2,a=>{
+    const d=pieData(a),i=integer(a.r,0,3),q=base(a);q.chart={...d.chart,showAngles:true};q.prompt=[`A total of ${d.total} people in the ${a.area.place} vote for a preferred training time.`,`The ${d.categories[i].toLowerCase()} sector is ${d.angles[i]}°.`,`How many people chose ${d.categories[i].toLowerCase()}?`];q.hint='Find the sector’s fraction of 360°, then apply that fraction to the total number of people.';q.calculator=true;
+    return numeric(q,d.counts[i],'people',[`${d.angles[i]} ÷ 360 × ${d.total} = ${d.counts[i]}.`,`${d.counts[i]} people chose ${d.categories[i].toLowerCase()}.`],[{value:d.angles[i],why:'That is the angle in degrees; the question asks for a number of people.'},{value:round(d.angles[i]/100*d.total,6),why:'A full circle is 360°, so divide the angle by 360 rather than 100.'}]);
+  });
+  add('pie_angle','pie','numeric',1,a=>{
+    const d=pieData(a),i=integer(a.r,0,3),q=base(a);q.table=d.table;q.prompt=[`People in the ${a.area.place} vote for their preferred training time.`,`There are ${d.total} votes in total.`,`What angle should represent ${d.categories[i].toLowerCase()} in a pie chart?`];q.hint='Sector angle = category frequency ÷ total frequency × 360°.';q.calculator=a.level>1;
+    return numeric(q,d.angles[i],'degrees',[`${d.counts[i]} ÷ ${d.total} × 360 = ${d.angles[i]}.`,`The sector angle is ${d.angles[i]}°.`],[{value:d.counts[i],why:'This is the frequency, but the question asks for the sector angle.'},{value:round(d.counts[i]/d.total*100,6),why:'This calculation finds a percentage; a pie-sector angle uses 360°, not 100.'}]);
+  });
+  add('pie_missing_angle','pie','numeric',1,a=>{
+    const d=pieData(a),i=integer(a.r,0,3),q=base(a);q.table={headers:['Training time','Sector angle'],rows:d.categories.map((v,j)=>[v,j===i?'?':`${d.angles[j]}°`])};q.prompt=[`The team in the ${a.area.place} is completing a pie chart.`,`Find the missing angle.`];q.hint='All sector angles must add to 360°.';
+    return numeric(q,d.angles[i],'degrees',[`The known angles total ${360-d.angles[i]}°.`,`360 − ${360-d.angles[i]} = ${d.angles[i]}°.`],[{value:360-d.angles[i],why:'That is the total of the known angles; subtract it from 360°.'}]);
+  });
+  add('pie_compare_totals','pie','mcq',3,a=>{
+    const small=pick(a.r,[20,40,60]),large=small*2,q=base(a);q.table={headers:['Survey','Total votes','Share choosing morning'],rows:[['Survey A',String(small),'One half'],['Survey B',String(large),'One quarter']]};q.prompt=[`Two surveys in the ${a.area.place} record preferred training times.`,`Which statement about the number choosing morning is correct?`];q.hint='A larger share does not always mean a larger number when survey totals differ.';
+    return mc(a,q,`The same number chose morning in each survey: ${small/2}`,[{label:'Twice as many chose morning in survey A',why:'The share is twice as large, but survey A has only half as many votes.'},{label:'Twice as many chose morning in survey B',why:'Survey B has twice the total, but only half the share chose morning.'},{label:'The numbers cannot be calculated from the information',why:'Each total and its relevant share are provided.'}],[`Survey A: ${small} ÷ 2 = ${small/2}.`,`Survey B: ${large} ÷ 4 = ${large/4}.`,`The numbers are equal.`]);
+  });
+  add('pie_key','pie','mcq',1,a=>{
+    const q=base(a);q.prompt=['A pie chart has four coloured sectors but no labels and no key.','What information is missing?'];q.hint='The reader needs to know which category each sector represents.';
+    return mc(a,q,'Which category each coloured sector represents',[{label:'Whether a full circle has 360°',why:'That is a mathematical fact, not the missing description of the categories.'},{label:'The horizontal-axis scale',why:'A pie chart does not use horizontal and vertical axes.'},{label:'The width of each bar',why:'A pie chart uses sectors, not bars.'}],['Add clear sector labels or a key so that every category can be identified.']);
+  });
+
+  add('mean_table','summary','numeric',1,a=>{
+    const d=dataset(a,'bar',a.level===1?4:5),q=base(a);q.table=d.table;q.prompt=[scene(a,d),`Find the mean number of ${d.c.unit} per ${d.c.period}.`];q.hint='Add all the numbers, then divide by how many numbers there are.';q.calculator=a.level>1;
+    const total=sum(d.values),answer=total/d.values.length;
+    return numeric(q,answer,d.c.unit,[`${d.values.join(' + ')} = ${total}.`,`${total} ÷ ${d.values.length} = ${fmt(answer)}.`,`The mean is ${fmt(answer)} ${d.c.unit} per ${d.c.period}.`],[{value:total,why:'You have found the total; divide by the number of sessions to find the mean.'},{value:Math.max(...d.values)-Math.min(...d.values),why:'Largest minus smallest gives the range, not the mean.'}]);
+  });
+  add('mean_graph','summary','numeric',2,a=>{
+    const d=dataset(a,pick(a.r,['bar','line']),a.level===2?4:5),q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`Find the mean number of ${d.c.unit} per ${d.c.period}.`];q.hint='Read each value, add them, then divide by the number of values.';q.calculator=true;
+    const total=sum(d.values),answer=total/d.values.length;
+    return numeric(q,answer,d.c.unit,[`The recorded values are ${d.values.join(', ')}.`,`Their total is ${total}.`,`${total} ÷ ${d.values.length} = ${fmt(answer)}.`],[{value:total,why:'The total still needs to be divided by the number of values.'},{value:Math.max(...d.values)-Math.min(...d.values),why:'That calculates the range, not the mean.'}]);
+  });
+  add('range_graph','summary','numeric',1,a=>{
+    const d=dataset(a,pick(a.r,['bar','line'])),q=base(a);q.chart=d.chart;q.prompt=[scene(a,d),`Find the range of the recorded numbers.`];q.hint='Find the highest and lowest values, then subtract.';
+    const hi=Math.max(...d.values),lo=Math.min(...d.values);
+    return numeric(q,hi-lo,d.c.unit,[`The greatest value is ${hi} and the smallest is ${lo}.`,`${hi} − ${lo} = ${hi-lo}.`,`The range is ${hi-lo} ${d.c.unit}.`],[{value:hi,why:'The greatest value alone is not the range; subtract the smallest value.'},{value:hi+lo,why:'Range is the difference between the extreme values, not their sum.'}]);
+  });
+  add('mean_reverse','summary','numeric',2,a=>{
+    const c=context(a.area),n=pick(a.r,[4,5,6,8]),mean=integer(a.r,5,a.level===2?20:35),q=base(a);q.prompt=[`The team in the ${a.area.place} records ${c.label}.`,`The mean over ${n} ${c.period}s is ${mean} ${c.unit} per ${c.period}.`,`How many ${c.unit} were recorded altogether?`];q.hint='Mean = total ÷ number of values, so total = mean × number of values.';q.calculator=true;
+    return numeric(q,n*mean,c.unit,[`${mean} × ${n} = ${mean*n}.`,`The total is ${mean*n} ${c.unit}.`],[{value:mean/n,why:'Dividing again would not recover the total; multiply the mean by the number of values.'},{value:mean+n,why:'The mean is an equal share for each session, so use multiplication rather than addition.'}]);
+  });
+  add('range_reverse','summary','numeric',2,a=>{
+    const c=context(a.area),lo=integer(a.r,3,15),range=integer(a.r,4,16),q=base(a);q.prompt=[`The team in the ${a.area.place} records ${c.label}.`,`The lowest number recorded is ${lo}.`,`The range is ${range}.`,`What is the highest number recorded?`];q.hint='Range = highest − lowest, so highest = lowest + range.';
+    return numeric(q,lo+range,c.unit,[`${lo} + ${range} = ${lo+range}.`,`Check: ${lo+range} − ${lo} = ${range}.`],[{value:range-lo,why:'Add the range to the lowest value to recover the highest value.'}]);
+  });
+  add('summary_method','summary','mcq',1,a=>{
+    const d=dataset(a,'bar',4),mean=a.r()<.5,q=base(a);q.table=d.table;q.prompt=[scene(a,d),`Which calculation finds the ${mean?'mean':'range'}?`];q.hint=mean?'The mean is the total shared equally across all the values.':'The range is the difference between the greatest and smallest values.';
+    const total=sum(d.values),hi=Math.max(...d.values),lo=Math.min(...d.values),meanCalc=`(${d.values.join(' + ')}) ÷ ${d.values.length}`,rangeCalc=`${hi} − ${lo}`;
+    return mc(a,q,mean?meanCalc:rangeCalc,[{label:mean?rangeCalc:meanCalc,why:`This finds the ${mean?'range':'mean'}, rather than the ${mean?'mean':'range'}.`},{label:d.values.join(' + '),why:'This finds the total only.'},{label:`${hi} + ${lo}`,why:'Adding the greatest and smallest values does not calculate the required statistic.'}],[mean?`Add the ${d.values.length} values and divide by ${d.values.length}.`:`Subtract the smallest value, ${lo}, from the greatest value, ${hi}.`]);
+  });
+
+  function drawing(a,kind,groupedMode=false) {
+    const d=dataset(a,kind,a.level===1?4:5),q=base(a);let values=d.values,categories=d.categories,title=d.chart.title,xLabel=d.chart.xLabel,yLabel=d.chart.yLabel;
+    if(groupedMode) {
+      const g=grouped(a);values=g.counts;categories=g.groups.map(v=>v.label);title=`Counts from training tasks in the ${a.area.place}`;xLabel='Number of items in a task';yLabel='Frequency';
+      q.table={headers:['Number of items in a task','Frequency'],rows:categories.map((v,i)=>[v,String(values[i])])};
+      q.prompt=[`The team in the ${a.area.place} groups whole-number counts from training tasks.`,`Draw a bar chart of the grouped frequencies.`,`Choose the title, both axis labels and a sensible scale.`,`Draw one bar for each group.`];
+    } else {
+      q.table=d.table;q.prompt=[scene(a,d),`Draw a ${kind==='bar'?'bar chart':'line graph'} using the table.`,`Choose the title, both axis labels and a sensible scale.`,kind==='bar'?'Set the height of every bar, including any zero values.':'Plot every point in session order.'];
+    }
+    const max=Math.max(...values);
+    const stepOptions=[1,2,5,10,20].filter(s=>s*10<max||s*10<=Math.max(max*4,10));
+    const validSteps=stepOptions.filter(s=>s*10>=max);
+    // All offered fitting scales are accepted; there is no arbitrary 40% rule.
+    q.kind='graph';q.graph={kind,title,xLabel,yLabel,categories,values,titleOptions:shuffle(a.r,[title,'Time spent travelling','Costs of equipment']),xOptions:shuffle(a.r,[xLabel,yLabel,'Cost (£)']),yOptions:shuffle(a.r,[yLabel,xLabel,'Distance (km)']),stepOptions,validSteps,snap:1};
+    q.answer={title,xLabel,yLabel,validSteps,step:validSteps[0],values};q.hint='Read the table, label the axes, choose a scale that fits the largest value, then plot each value accurately.';
+    q.explanation=[`Use “${xLabel}” on the horizontal axis and “${yLabel}” on the vertical axis.`,`A scale step of ${validSteps.join(' or ')} fits all the data on the ten-interval grid.`,...categories.map((v,i)=>`${v}: ${values[i]}.`)];
+    return q;
+  }
+  add('draw_bar','drawing','graph',1,a=>drawing(a,'bar'),'bar');
+  add('draw_line','drawing','graph',1,a=>drawing(a,'line'),'line');
+  add('draw_grouped','drawing','graph',2,a=>drawing(a,'bar',true),'bar');
+  add('draw_pie','drawing','pie',1,a=>{
+    const d=pieData(a),q=base(a);q.kind='pie';q.prompt=[`People in the ${a.area.place} vote for their preferred training time.`,`Complete a pie chart showing the results.`,`Choose the title and set the angle for each labelled sector.`,a.level===1?'Use the sector angles provided in the table.':'Calculate the angles from the vote counts, then construct the sectors.'];
+    q.table={headers:['Training time','Number of votes',...(a.level===1?['Sector angle']:[])],rows:d.categories.map((v,i)=>[v,String(d.counts[i]),...(a.level===1?[`${d.angles[i]}°`]:[])])};
+    q.pie={title:d.chart.title,categories:d.categories,counts:d.counts,angles:d.angles,titleOptions:shuffle(a.r,[d.chart.title,'Equipment costs','Distances travelled']),angleStep:15};q.answer={title:d.chart.title,angles:d.angles};
+    q.hint=a.level===1?'Use the angle given for each category, measuring each sector from its starting radius.':'For each category, calculate its frequency ÷ total frequency × 360°. Then construct that angle.';
+    q.explanation=d.categories.map((v,i)=>`${v}: ${d.counts[i]} ÷ ${d.total} × 360 = ${d.angles[i]}°.`);q.explanation.push('The four angles add to 360°, so they fill the whole circle.');q.calculator=a.level>1;return q;
+  },'pie');
+
+  const introData=[
+    {title:'Data and frequency',teaching:['Data are information that have been collected.','Frequency means how often a value or category occurs.'],prompt:['A table records that eight people chose an activity.','What is the frequency for that activity?'],correct:'8',wrong:[{label:'The name of the activity',why:'That is the category; frequency is how many chose it.'},{label:'The heading of the table',why:'A heading explains the table, not how many chose an activity.'},{label:'The number of different activities',why:'That counts categories, not the votes for this activity.'}],explanation:['Eight people chose the activity, so its frequency is 8.']},
+    {title:'Discrete data and grouping',teaching:['Discrete numerical data take separate values, such as whole-number counts.','Groups should not overlap, and every value must belong to one group.'],prompt:['Counts are grouped as 0–4, 5–9 and 10–14.','Which group contains the count 9?'],correct:'5–9',wrong:[{label:'0–4',why:'9 is greater than 4.'},{label:'10–14',why:'9 is less than 10.'},{label:'Both 5–9 and 10–14',why:'These groups do not overlap, and 9 belongs only to 5–9.'}],explanation:['The group 5–9 includes both 5 and 9.']},
+    {title:'Axes and units',teaching:['The horizontal axis runs across a graph, and the vertical axis runs up it.','Labels identify the quantities or categories, and units tell us how measurements are expressed.'],prompt:['A graph shows time in minutes on its vertical axis.','Which label is clearest?'],correct:'Time (minutes)',wrong:[{label:'Time',why:'This does not state the unit.'},{label:'Number of people',why:'The vertical quantity is time, not a count of people.'},{label:'Graph',why:'This does not identify the measured quantity.'}],explanation:['Time (minutes) identifies both the quantity and its unit.']},
+    {title:'A consistent scale',teaching:['Equal spaces on a numerical axis represent equal differences.','Choose a scale that fits all the values and makes them clear to read.'],prompt:['Equally spaced labels are 0, 5, 10, 15 and 20.','What does one interval represent?'],correct:'5',wrong:[{label:'1',why:'One interval goes from 0 to 5, not from 0 to 1.'},{label:'10',why:'10 covers two of these intervals.'},{label:'20',why:'20 covers four of these intervals.'}],explanation:['Every neighbouring pair of labels differs by 5.']},
+    {title:'Bar charts',teaching:['Bar charts compare values for categories or groups.','Use labelled axes, a consistent scale, and accurate bars with equal widths and gaps.'],prompt:['What determines the height of a bar?'],correct:'The value for its category, read using the scale',wrong:[{label:'How long the category name is',why:'The length of the name has nothing to do with its numerical value.'},{label:'The order in which categories are listed',why:'The order does not determine the values.'},{label:'The colour chosen for the bar',why:'Colour helps identification but does not determine height.'}],explanation:['A bar’s height must match the category’s value on the numerical scale.']},
+    {title:'Line graphs',teaching:['A line graph can show how recorded values change over time or another ordered sequence.','Plot the points accurately and join consecutive points in order.'],prompt:['A line graph has points for Monday, Tuesday and Wednesday.','How should you join them?'],correct:'Monday to Tuesday, then Tuesday to Wednesday',wrong:[{label:'Smallest value to largest value',why:'That may change the time order.'},{label:'Join every point to every other point',why:'Only consecutive recorded times should be joined.'},{label:'Join only Monday to Wednesday and ignore Tuesday',why:'The Tuesday value must be represented too.'}],explanation:['Join consecutive days in the order they happened.']},
+    {title:'Pie charts',teaching:['A pie chart shows parts of one whole.','The full circle is 360°.','Sector angle = frequency ÷ total frequency × 360°.','Use sector labels or a key so the categories can be identified.'],prompt:['One category is one quarter of all the votes.','What should its sector angle be?'],correct:'90°',wrong:[{label:'25°',why:'One quarter is 25%, but an angle is measured out of 360°, not 100.'},{label:'180°',why:'180° represents one half of a full circle.'},{label:'360°',why:'360° represents the entire circle.'}],explanation:['360° ÷ 4 = 90°.']},
+    {title:'Mean and range',teaching:['Mean = total of the values ÷ number of values.','Range = greatest value − smallest value.','The mean describes an average level, and the range describes the spread.'],prompt:['The values are 4, 6 and 8.','Which calculation finds the range?'],correct:'8 − 4',wrong:[{label:'(4 + 6 + 8) ÷ 3',why:'This finds the mean.'},{label:'4 + 6 + 8',why:'This finds the total.'},{label:'8 + 4',why:'Range is a difference, not the sum of the extreme values.'}],explanation:['8 − 4 =4, so the range is 4.']}
+  ];
+  const INTRO=introData.map((d,i)=>{
+    const a={r:seeded('intro-'+i)},q=mc(a,{...base(a),prompt:d.prompt,hint:d.teaching[0]},d.correct,d.wrong,d.explanation);
+    return {...q,id:`intro-${i+1}`,family:'intro',skill:'vocabulary',level:1,signature:`intro-${i+1}`,title:d.title,teaching:d.teaching,intro:true};
+  });
+
+  function setAreas(areas) {if(Array.isArray(areas)&&areas.length) AREAS=areas;return AREAS;}
+  function generate(options={}) {
+    const level=Math.min(3,Math.max(1,Number(options.level)||1)),seed=options.seed===undefined?Date.now():options.seed;
+    const area=AREAS.find(a=>a.id===options.areaId)||AREAS.find(a=>a.id==='general')||AREAS[0];
+    if(!area) throw new Error('Vocational areas must be loaded before generating a question.');
+    const excluded=new Set(options.exclude||[]);
+    let choices=FAMILIES.filter(f=>(!options.skill||f.skill===options.skill)&&f.minLevel<=level&&!excluded.has(f.id));
+    if(options.familyId) {const f=FAMILIES.find(v=>v.id===options.familyId);if(!f)throw new Error(`Unknown question family: ${options.familyId}`);choices=[f];}
+    if(!choices.length) choices=FAMILIES.filter(f=>(!options.skill||f.skill===options.skill)&&f.minLevel<=level);
+    if(!choices.length) throw new Error('No question families match the requested skill.');
+    let result;
+    for(let attempt=0;attempt<150;attempt++) {
+      const r=seeded(`${seed}|${attempt}|${area.id}`),f=pick(r,choices),a={r,area,level:Math.max(level,f.minLevel)};
+      const q=generators[f.id](a);
+      q.family=f.id;q.skill=f.skill;q.level=a.level;q.areaId=area.id;
+      q.signature=f.id+'-'+hash(JSON.stringify([q.prompt,q.table,q.chart,q.rawData,q.graph,q.pie,q.answer])).toString(36);
+      q.id=q.signature+'-'+hash(String(seed)).toString(36);result=q;
+      if(!excluded.has(q.signature)&&!excluded.has(q.id)) return q;
+    }
+    // A small definition family can be exhausted. Move to another family in
+    // the same skill rather than immediately repeating the identical question.
+    if(options.familyId&&!options._fallback) {
+      return generate({...options,familyId:undefined,skill:result.skill,seed:`${seed}:fresh`,exclude:[...excluded,options.familyId],_fallback:true});
+    }
+    return result;
+  }
+
+  function parseNumber(value,unit='') {
+    if(typeof value==='number') return Number.isFinite(value)?value:NaN;
+    if(typeof value!=='string')return NaN;
+    let s=value.trim();if(!s)return NaN;
+    if(s.startsWith('£')) {
+      if(unit!=='£') return NaN;
+      s=s.slice(1).trim();
+    }
+    if(unit) {
+      const aliases=unit==='degrees'?['degrees','degree','°']:unit==='£'?['£']: [unit];
+      for(const u of aliases) if(s.toLowerCase().endsWith(u.toLowerCase())) {s=s.slice(0,-u.length).trim();break;}
+    }
+    // Commas are allowed only as correctly placed thousands separators.
+    if(s.includes(',')&&!/^[-+]?(?:\d{1,3})(?:,\d{3})+(?:\.\d+)?$/.test(s))return NaN;
+    s=s.replace(/,/g,'');
+    if(!/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s))return NaN;
+    return Number(s);
+  }
+  function evaluate(q,response) {
+    const checks=[];
+    const check=(label,correct,expected,actual,why)=>checks.push({label,correct:!!correct,expected,actual:actual===undefined?null:actual,why});
+    if(q.kind==='mcq') {
+      const value=response&&typeof response==='object'?response.value:response;
+      const chosen=q.options.find(o=>String(o.value)===String(value));
+      const ok=chosen&&String(chosen.value)===String(q.answer);
+      check('Answer',ok,q.answer,chosen?chosen.label:(value??''),ok?'This answer matches the information.':chosen?chosen.why:'Choose one of the available answers.');
+    } else if(q.kind==='numeric') {
+      const value=parseNumber(response,q.unit),ok=approx(value,q.answer,q.tolerance||1e-7);
+      const misconception=(q.misconceptions||[]).find(m=>approx(value,m.value));
+      check('Answer',ok,q.answer,response,ok?'The value and method match the question.':!Number.isFinite(value)?'Enter a number in the stated unit.':misconception?misconception.why:(q.explanation[0]||'Recheck the values and the operation asked for.'));
+    } else if(q.kind==='table') {
+      const values=Array.isArray(response)?response:(response&&response.values)||[];
+      q.answer.forEach((v,i)=>check(q.groups[i].label,approx(parseNumber(values[i]),v),v,values[i],`Count the values from ${q.groups[i].lo} to ${q.groups[i].hi}, including both endpoints.`));
+    } else if(q.kind==='graph') {
+      const v=response||{},g=q.graph;
+      check('Chart title',v.title===q.answer.title,q.answer.title,v.title,'Choose a title that describes the data in the table.');
+      check('Horizontal axis',v.xLabel===q.answer.xLabel,q.answer.xLabel,v.xLabel,'The horizontal axis names the categories or ordered sessions.');
+      check('Vertical axis',v.yLabel===q.answer.yLabel,q.answer.yLabel,v.yLabel,'The vertical axis identifies the quantity being plotted and its units.');
+      const s=parseNumber(v.step),valid=q.answer.validSteps.some(x=>approx(x,s));
+      check('Scale',valid,q.answer.validSteps.join(' or '),v.step,Number.isFinite(s)&&s>0&&s*10<Math.max(...q.answer.values)?`This scale only reaches ${s*10}; it must fit the greatest value, ${Math.max(...q.answer.values)}.`:'Choose a consistent scale from the offered options that fits all the data.');
+      q.answer.values.forEach((expected,i)=>check(g.categories[i],approx(parseNumber((v.values||[])[i]),expected),expected,(v.values||[])[i],`The table gives ${expected} for ${g.categories[i]}.`));
+    } else if(q.kind==='pie') {
+      const v=response||{},angles=v.angles||[];
+      check('Chart title',v.title===q.answer.title,q.answer.title,v.title,'Choose the title that describes this survey.');
+      q.answer.angles.forEach((expected,i)=>check(q.pie.categories[i],approx(parseNumber(angles[i],'degrees'),expected,.01),`${expected}°`,angles[i],`${q.pie.counts[i]} ÷ ${sum(q.pie.counts)} × 360 = ${expected}°.`));
+      const numbers=angles.map(n=>parseNumber(n,'degrees'));
+      check('Complete circle',numbers.length===q.answer.angles.length&&numbers.every(Number.isFinite)&&approx(sum(numbers),360,.01),'360°',numbers.every(Number.isFinite)?`${fmt(sum(numbers))}°`:'Incomplete','The sector angles must add to 360°.');
+    } else {check('Answer',false,'Recognised question type',q.kind,'This question type could not be marked.');}
+    const correct=checks.length>0&&checks.every(c=>c.correct);
+    const failed=checks.filter(c=>!c.correct);
+    return {correct,summary:correct?'Correct — well done.':q.kind==='graph'||q.kind==='pie'||q.kind==='table'?`${checks.filter(c=>c.correct).length} of ${checks.length} checks are correct. Review the details below.`:'Not quite — let’s check the method.',details:correct?q.explanation.slice():[...failed.map(c=>`${c.label}: ${c.why}`),...q.explanation],checks};
+  }
+  return {SKILLS,FAMILIES,INTRO,SOURCES,generate,evaluate,seeded,parseNumber,setAreas,get AREAS(){return AREAS;}};
+});
+
+;
+(function(root){
+  'use strict';
+  const SVGNS='http://www.w3.org/2000/svg';
+  const COLOURS=['#087d7c','#cf6a36','#5b64b7','#b14479','#5e7e32','#a77416'];
+  const G={w:720,h:490,x:108,y:34,pw:576,ph:330};
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fmt=n=>Number.isFinite(Number(n))?Number(Number(n).toFixed(8)).toLocaleString('en-GB',{maximumFractionDigits:8}):String(n??'');
+  const finite=v=>v!==null&&v!==''&&Number.isFinite(Number(v));
+  const clean=v=>String(v??'graph').replace(/[^a-zA-Z0-9_-]/g,'-');
+  function unique(a){return [...new Set(a.filter(x=>x!==null&&x!==undefined).map(String))];}
+  function optionList(options,selected,placeholder){return '<option value="">'+esc(placeholder)+'</option>'+unique(options).map(x=>'<option value="'+esc(x)+'"'+(String(selected)===x?' selected':'')+'>'+esc(x)+'</option>').join('');}
+  function words(text,max=16){
+    const raw=String(text??'').split(/\s+/),out=[];let line='';
+    raw.forEach(word=>{if(!line){line=word;}else if((line+' '+word).length<=max){line+=' '+word;}else{out.push(line);line=word;}});if(line)out.push(line);return out;
+  }
+  function textLines(text,x,y,{max=16,lineHeight=19,anchor='middle',className='',fill='var(--ink)'}={}){
+    return '<text x="'+x+'" y="'+y+'" text-anchor="'+anchor+'" class="'+className+'" fill="'+fill+'">'+words(text,max).map((t,i)=>'<tspan x="'+x+'" dy="'+(i?lineHeight:0)+'">'+esc(t)+'</tspan>').join('')+'</text>';
+  }
+  function niceStep(values){const m=Math.max(1,...values.map(Number));return [1,2,5,10,20,50,100,200,500,1000].find(x=>x*10>=m)||Math.ceil(m/10);}
+  function positions(chart){
+    const n=chart.categories.length;
+    if(chart.xPositions?.length===n){const a=chart.xPositions.map(Number),lo=Math.min(...a),hi=Math.max(...a),pad=G.pw/(Math.max(n,2)*2);return a.map(v=>G.x+pad+(hi===lo?.5:(v-lo)/(hi-lo))*(G.pw-2*pad));}
+    return chart.categories.map((_,i)=>G.x+G.pw*(i+.5)/n);
+  }
+  function gridSVG(chart,values,step,{editable=false,selected=-1,hasScale=true}={}){
+    const n=chart.categories.length,stepNum=Number(step)||niceStep(chart.values||[]),ticks=Number(chart.tickCount)||10,min=Number(chart.min)||0,max=min+stepNum*ticks;
+    const xs=positions(chart),yFor=v=>G.y+G.ph-(Number(v)-min)/(max-min)*G.ph;
+    // Counts need whole-unit gridlines, even when numbered labels increase by 5 or 10.
+    // An explicit minorStep can be used by a future chart containing fractional readings.
+    const countData=(chart.values||values).filter(finite).every(v=>Number.isInteger(Number(v))),requestedMinor=Number(chart.minorStep);
+    const minor=requestedMinor>0?requestedMinor:countData&&Number.isInteger(stepNum)&&stepNum<=20?1:stepNum/2;
+    const subdivisions=Math.max(1,Math.min(40,Math.round(stepNum/minor))),gridCount=ticks*subdivisions;
+    let out='<rect x="'+G.x+'" y="'+G.y+'" width="'+G.pw+'" height="'+G.ph+'" fill="var(--panel)"/>';
+    for(let i=0;i<=gridCount;i++){
+      const y=G.y+G.ph-G.ph*i/gridCount,major=i%subdivisions===0;
+      out+='<line x1="'+G.x+'" y1="'+y+'" x2="'+(G.x+G.pw)+'" y2="'+y+'" stroke="var(--line)" stroke-width="'+(major?1.25:gridCount>100?.35:.55)+'"/>';
+      if(major&&hasScale)out+='<text x="'+(G.x-12)+'" y="'+(y+5)+'" text-anchor="end" fill="var(--muted)" class="graph-tick">'+esc(fmt(min+stepNum*i/subdivisions))+'</text>';
+    }
+    xs.forEach(x=>out+='<line x1="'+x+'" y1="'+G.y+'" x2="'+x+'" y2="'+(G.y+G.ph)+'" stroke="var(--line)" stroke-width=".55"/>');
+    if(editable&&selected>=0){out+='<rect x="'+(xs[selected]-G.pw/n*.43)+'" y="'+G.y+'" width="'+(G.pw/n*.86)+'" height="'+G.ph+'" fill="var(--teal)" opacity=".065"/>';}
+    const barWidth=G.pw/n*.62;
+    if(chart.kind==='bar'){
+      values.forEach((v,i)=>{if(!finite(v)){
+        if(editable)out+='<rect x="'+(xs[i]-barWidth/2)+'" y="'+(G.y+G.ph-6)+'" width="'+barWidth+'" height="6" fill="none" stroke="var(--muted)" stroke-dasharray="4 4"/>';
+        return;
+      }const y=yFor(Math.max(min,Math.min(max,Number(v)))),h=Math.max(0,G.y+G.ph-y);
+        out+='<rect x="'+(xs[i]-barWidth/2)+'" y="'+y+'" width="'+barWidth+'" height="'+Math.max(h,Number(v)===0?2:0)+'" rx="2" fill="var(--teal)" opacity=".92"/>';
+        if(editable){out+='<line x1="'+(xs[i]-barWidth/2)+'" y1="'+y+'" x2="'+(xs[i]+barWidth/2)+'" y2="'+y+'" stroke="var(--ink)" stroke-width="2"/>';}
+      });
+    }else{
+      for(let i=1;i<n;i++)if(finite(values[i-1])&&finite(values[i])){
+        const a=Number(values[i-1]),b=Number(values[i]);if(a>=min&&a<=max&&b>=min&&b<=max)out+='<line x1="'+xs[i-1]+'" y1="'+yFor(a)+'" x2="'+xs[i]+'" y2="'+yFor(b)+'" stroke="var(--teal)" stroke-width="3"/>';
+      }
+      values.forEach((v,i)=>{if(finite(v)&&Number(v)>=min&&Number(v)<=max){const y=yFor(v);out+='<circle cx="'+xs[i]+'" cy="'+y+'" r="'+(editable?6:5)+'" fill="var(--panel)" stroke="var(--teal)" stroke-width="3"/>';if(editable&&selected===i)out+='<circle cx="'+xs[i]+'" cy="'+y+'" r="11" fill="none" stroke="var(--ink)" stroke-width="1.5"/>';}});
+    }
+    out+='<path d="M'+G.x+' '+G.y+'V'+(G.y+G.ph)+'H'+(G.x+G.pw)+'" fill="none" stroke="var(--ink)" stroke-width="2"/>';
+    xs.forEach((x,i)=>{out+='<line x1="'+x+'" y1="'+(G.y+G.ph)+'" x2="'+x+'" y2="'+(G.y+G.ph+6)+'" stroke="var(--ink)"/>';out+=textLines(chart.categories[i],x,G.y+G.ph+28,{max:n>=6?12:17,lineHeight:19,className:'graph-category'});});
+    if(!editable){out+=textLines(chart.xLabel||'',G.x+G.pw/2,469,{max:50,className:'graph-axis-label'});out+='<text transform="translate(29 '+(G.y+G.ph/2)+') rotate(-90)" text-anchor="middle" fill="var(--ink)" class="graph-axis-label">'+esc(chart.yLabel||'')+'</text>';}
+    if(!hasScale)out+='<rect x="'+(G.x+G.pw/2-148)+'" y="'+(G.y+G.ph/2-28)+'" width="296" height="56" rx="9" fill="var(--panel)" stroke="var(--line)"/><text x="'+(G.x+G.pw/2)+'" y="'+(G.y+G.ph/2+5)+'" text-anchor="middle" fill="var(--muted)" class="graph-instruction">Choose a scale to begin plotting</text>';
+    return out;
+  }
+  function point(cx,cy,r,a){const t=(a-90)*Math.PI/180;return {x:cx+r*Math.cos(t),y:cy+r*Math.sin(t)};}
+  function sector(cx,cy,r,start,angle){
+    if(angle<=0)return '';if(angle>=359.999999)return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'"/>';
+    const a=point(cx,cy,r,start),b=point(cx,cy,r,start+angle);return '<path d="M '+cx+' '+cy+' L '+a.x+' '+a.y+' A '+r+' '+r+' 0 '+(angle>180?1:0)+' 1 '+b.x+' '+b.y+' Z"/>';
+  }
+  function keyHTML(categories,{editable=false,active=0}={}){
+    return '<ul class="graph-key" aria-label="Chart key">'+categories.map((c,i)=>'<li'+(editable&&active===i?' class="active"':'')+'><span class="graph-swatch" style="--swatch:'+COLOURS[i%COLOURS.length]+'" aria-hidden="true">'+String.fromCharCode(65+i)+'</span><span>'+esc(c)+'</span></li>').join('')+'</ul>';
+  }
+  function pieReadSVG(chart){
+    const values=chart.values||chart.counts||[],total=values.reduce((s,v)=>s+Number(v),0),cx=200,cy=200,r=160;
+    let out='<circle cx="200" cy="200" r="160" fill="var(--surface)" stroke="var(--line)"/>';let start=0;
+    values.forEach((v,i)=>{const a=total?Number(v)/total*360:0;out+='<g fill="'+COLOURS[i%COLOURS.length]+'" stroke="var(--panel)" stroke-width="2">'+sector(cx,cy,r,start,a)+'</g>';if(a>=20){const p=point(cx,cy,r*.66,start+a/2);let label=String.fromCharCode(65+i);if(chart.sectorLabels?.[i]!==undefined)label=chart.sectorLabels[i];else if(chart.showAngles)label=String.fromCharCode(65+i)+' · '+fmt(a)+'°';else if(chart.showPercent)label=String.fromCharCode(65+i)+' · '+fmt(Number(v)/total*100)+'%';out+=textLines(label,p.x,p.y+6,{max:13,fill:'#fff',className:'graph-pie-label'});}start+=a;});
+    return out;
+  }
+  function readHTML(chart,opts={}){
+    if(!chart||!Array.isArray(chart.categories))return '';
+    const title=chart.title||'',kind=chart.kind||'bar',id=clean(opts.id||'read-chart');
+    let body;if(kind==='pie')body='<div class="graph-pie-reading"><svg viewBox="0 0 400 400" role="img" aria-label="'+esc('Pie chart: '+title+'. Use the key to identify the categories.')+'" class="graph-pie-read-svg">'+pieReadSVG(chart)+'</svg>'+keyHTML(chart.categories)+'</div>';
+    else body='<div class="graph-scroll" tabindex="0" role="region" aria-label="'+esc(kind==='line'?'Line graph. Scroll horizontally if needed.':'Bar chart. Scroll horizontally if needed.')+'"><svg viewBox="0 0 720 490" role="img" aria-labelledby="'+id+'-title" class="graph-read-svg"><title id="'+id+'-title">'+esc(title+'. Horizontal axis: '+(chart.xLabel||'')+'. Vertical axis: '+(chart.yLabel||'')+'.')+'</title>'+gridSVG(chart,chart.values||[],chart.step)+'</svg></div>';
+    let table='';if(opts.showData)table='<div class="table-scroll"><table><caption>Data shown in the chart</caption><thead><tr><th scope="col">'+esc(chart.xLabel||'Category')+'</th><th scope="col">'+esc(chart.yLabel||'Frequency')+'</th></tr></thead><tbody>'+chart.categories.map((c,i)=>'<tr><th scope="row">'+esc(c)+'</th><td>'+esc(fmt(chart.values[i]))+'</td></tr>').join('')+'</tbody></table></div>';
+    return '<figure class="graph-figure"><figcaption class="graph-title">'+esc(title)+'</figcaption>'+body+table+'</figure>';
+  }
+  function graphEditorHTML(q,response,disabled){
+    const c=q.graph,id=clean(q.id||'graph-editor'),r=response||{},n=c.categories.length;
+    const values=Array.isArray(r.values)?r.values:Array(n).fill(null),dis=disabled?' disabled':'',hasScale=finite(r.step)&&Number(r.step)>0;
+    return '<div class="graph-editor" data-graph-editor="cartesian" data-disabled="'+String(disabled)+'" data-selected="0">'+
+      '<div class="graph-editor-top"><label for="'+id+'-title-select">Chart title<select id="'+id+'-title-select" data-graph-field="title"'+dis+'>'+optionList(c.titleOptions||[c.title],r.title,'Choose a title…')+'</select></label><label for="'+id+'-scale-select">Vertical scale: each large interval<select id="'+id+'-scale-select" data-graph-field="step"'+dis+'><option value="">Choose a scale…</option>'+unique(c.stepOptions||[1,2,5,10,20]).map(s=>'<option value="'+esc(s)+'"'+(Number(r.step)===Number(s)?' selected':'')+'>'+esc(fmt(s))+'</option>').join('')+'</select></label></div>'+
+      '<p class="graph-help" id="'+id+'-help">Choose the axis labels on the graph.<br>Click or drag '+(c.kind==='bar'?'each bar to its height':'at each category to plot a point')+'.<br>You can also enter each plotted value below the graph.</p>'+
+      '<div class="graph-scroll"><div class="graph-edit-canvas"><svg viewBox="0 0 720 490" class="graph-plot-canvas" tabindex="'+(disabled?'-1':'0')+'" role="group" aria-label="'+esc((c.kind==='bar'?'Bar':'Line')+' graph drawing area. Left and right select a category. Up and down change its value. Delete clears it.')+'" aria-describedby="'+id+'-help">'+gridSVG(c,values,r.step,{editable:true,selected:0,hasScale})+'</svg>'+
+      '<label class="graph-axis-y"><span class="sr-only">Vertical axis label</span><select data-graph-field="yLabel" aria-label="Vertical axis label"'+dis+'>'+optionList(c.yOptions||[c.yLabel],r.yLabel,'Choose vertical axis…')+'</select></label>'+
+      '<label class="graph-axis-x"><span class="sr-only">Horizontal axis label</span><select data-graph-field="xLabel" aria-label="Horizontal axis label"'+dis+'>'+optionList(c.xOptions||[c.xLabel],r.xLabel,'Choose horizontal axis…')+'</select></label>'+
+      '</div></div><div class="graph-value-controls">'+c.categories.map((category,i)=>'<label class="graph-value-control"><span>'+esc(category)+'</span><input type="number" inputmode="decimal" data-graph-value="'+i+'" aria-label="'+esc('Plotted value for '+category)+'" min="0"'+(hasScale?' max="'+Number(r.step)*10+'"':'')+' step="'+esc(c.snap||1)+'" value="'+(finite(values[i])?esc(values[i]):'')+'" placeholder="Not plotted"'+dis+'><input type="range" data-graph-range="'+i+'" aria-label="'+esc('Adjust plotted value for '+category)+'" min="0" max="'+(Number(r.step)||1)*10+'" step="'+esc(c.snap||1)+'" value="'+(finite(values[i])?esc(values[i]):0)+'"'+(disabled||!hasScale?' disabled':'')+'></label>').join('')+'</div>'+
+      '<div class="graph-editor-bottom"><button type="button" class="btn secondary small" data-graph-clear'+dis+'>Clear plotted values</button><p class="graph-live" role="status" aria-live="polite">'+(hasScale?'Scale chosen. Plot each value.':'Choose a vertical scale before plotting.')+'</p></div></div>';
+  }
+  function pieEditorSVG(c,r,active){
+    const a=Array.isArray(r.angles)?r.angles:Array(c.categories.length).fill(null),cx=200,cy=200,rad=132;
+    let out='<circle cx="200" cy="200" r="132" fill="var(--surface)" stroke="var(--line)"/>',start=0;
+    a.forEach((v,i)=>{const angle=finite(v)?Math.max(0,Number(v)):0,visible=Math.max(0,Math.min(angle,360-start));out+='<g fill="'+COLOURS[i%COLOURS.length]+'" opacity="'+(i===active?'1':'.82')+'" stroke="var(--panel)" stroke-width="2">'+sector(cx,cy,rad,start,visible)+'</g>';if(visible>=25){const p=point(cx,cy,rad*.65,start+visible/2);out+='<text x="'+p.x+'" y="'+(p.y+6)+'" text-anchor="middle" fill="#fff" class="graph-pie-label">'+String.fromCharCode(65+i)+'</text>';}start+=angle;});
+    for(let angle=0;angle<360;angle+=5){const major=angle%30===0,mid=angle%15===0,p=point(cx,cy,major?143:mid?147:151,angle),end=point(cx,cy,158,angle);out+='<line x1="'+p.x+'" y1="'+p.y+'" x2="'+end.x+'" y2="'+end.y+'" stroke="var(--muted)" stroke-width="'+(major?1.5:1)+'"/>';if(major){const t=point(cx,cy,178,angle);out+='<text x="'+t.x+'" y="'+(t.y+5)+'" text-anchor="middle" fill="var(--muted)" class="graph-degree">'+angle+'°</text>';}}
+    const begin=a.slice(0,active).reduce((s,v)=>s+(finite(v)?Number(v):0),0),endAngle=begin+(finite(a[active])?Number(a[active]):0),p0=point(cx,cy,140,begin),p1=point(cx,cy,140,endAngle);
+    out+='<line x1="200" y1="200" x2="'+p0.x+'" y2="'+p0.y+'" stroke="var(--ink)" stroke-width="2" stroke-dasharray="5 4"/><line x1="200" y1="200" x2="'+p1.x+'" y2="'+p1.y+'" stroke="var(--ink)" stroke-width="3"/><circle cx="'+p1.x+'" cy="'+p1.y+'" r="8" fill="var(--panel)" stroke="var(--ink)" stroke-width="3"/><circle cx="200" cy="200" r="4" fill="var(--ink)"/>';
+    return out;
+  }
+  function pieStatus(c,r){const a=r.angles||[],sum=a.reduce((s,v)=>s+(finite(v)?Number(v):0),0),unset=a.filter(v=>!finite(v)).length;
+    if(a.some(v=>finite(v)&&(Number(v)<0||Number(v)>360)))return 'Each sector angle must be from 0° to 360°.';
+    if(sum>360)return fmt(sum)+'° entered. The angles exceed one full circle by '+fmt(sum-360)+'°.';
+    if(sum<360)return fmt(sum)+'° entered. '+fmt(360-sum)+'° of the circle is still unallocated.';
+    return unset? '360° entered. Check that every category has an angle.':'360° entered. The sectors make one full circle.';
+  }
+  function pieEditorHTML(q,response,disabled){
+    const c=q.pie,r=response||{},id=clean(q.id||'pie-editor'),a=Array.isArray(r.angles)?r.angles:Array(c.categories.length).fill(null),dis=disabled?' disabled':'';
+    return '<div class="graph-editor" data-graph-editor="pie" data-disabled="'+String(disabled)+'">'+
+      '<div class="graph-editor-top"><label for="'+id+'-pie-title">Chart title<select id="'+id+'-pie-title" data-pie-title'+dis+'>'+optionList(c.titleOptions||[c.title],r.title,'Choose a title…')+'</select></label><label for="'+id+'-pie-active">Sector to draw<select id="'+id+'-pie-active" data-pie-active'+dis+'>'+c.categories.map((x,i)=>'<option value="'+i+'">'+String.fromCharCode(65+i)+' · '+esc(x)+'</option>').join('')+'</select></label></div>'+
+      '<p class="graph-help">Select a sector, then drag its solid edge around the circle.<br>The dashed edge is its starting point.<br>Use the angle fields for precise keyboard entry.</p>'+
+      '<div class="graph-pie-grid"><svg viewBox="0 0 400 400" class="graph-pie-edit-svg" tabindex="'+(disabled?'-1':'0')+'" role="group" aria-label="Pie chart drawing area. Up and down change the selected sector angle. Left and right choose a sector.">'+pieEditorSVG(c,{angles:a},0)+'</svg><div>'+keyHTML(c.categories,{editable:true,active:0})+'<div class="graph-pie-angle-controls">'+c.categories.map((x,i)=>'<label><span>'+String.fromCharCode(65+i)+' · '+esc(x)+'</span><div class="graph-angle-input"><input type="number" inputmode="decimal" data-pie-angle="'+i+'" min="0" max="360" step="'+esc(c.angleStep||1)+'" value="'+(finite(a[i])?esc(a[i]):'')+'" placeholder="Angle" aria-label="'+esc('Angle in degrees for '+x)+'"'+dis+'><span aria-hidden="true">°</span></div></label>').join('')+'</div></div></div>'+
+      '<div class="graph-editor-bottom"><button type="button" class="btn secondary small" data-pie-clear'+dis+'>Clear sector angles</button><p class="graph-live" role="status" aria-live="polite">'+esc(pieStatus(c,{angles:a}))+'</p></div></div>';
+  }
+  function editorHTML(q,response,opts={}){return q.kind==='pie'?pieEditorHTML(q,response,!!opts.disabled):graphEditorHTML(q,response,!!opts.disabled);}
+  function bindEditor(container,q,response,onChange=()=>{}){
+    const host=container.matches?.('[data-graph-editor]')?container:container.querySelector('[data-graph-editor]');if(!host||host.dataset.disabled==='true')return ()=>{};
+    const controller=new AbortController(),signal=controller.signal,listen=(el,type,fn)=>el?.addEventListener(type,fn,{signal});
+    const notify=()=>onChange(response),live=host.querySelector('.graph-live');
+    if(q.kind==='pie'){
+      const c=q.pie;response.angles=Array.isArray(response.angles)?response.angles:Array(c.categories.length).fill(null);
+      let active=0,dragging=false;const svg=host.querySelector('.graph-pie-edit-svg'),select=host.querySelector('[data-pie-active]');
+      function refresh(announcement){svg.innerHTML=pieEditorSVG(c,response,active);host.querySelectorAll('[data-pie-angle]').forEach(input=>{const v=response.angles[Number(input.dataset.pieAngle)];if(document.activeElement!==input)input.value=finite(v)?v:'';input.setAttribute('aria-invalid',String(finite(v)&&(Number(v)<0||Number(v)>360)));});host.querySelectorAll('.graph-key li').forEach((el,i)=>el.classList.toggle('active',i===active));live.textContent=(announcement?announcement+' ':'')+pieStatus(c,response);}
+      function setAngle(i,value){response.angles[i]=value;refresh();notify();}
+      listen(host.querySelector('[data-pie-title]'),'change',e=>{response.title=e.target.value;notify();});
+      listen(select,'change',e=>{active=Number(e.target.value);refresh('Drawing '+c.categories[active]+'.');});
+      host.querySelectorAll('[data-pie-angle]').forEach(input=>{listen(input,'input',e=>{const v=e.target.value;setAngle(Number(input.dataset.pieAngle),v===''?null:Number(v));});listen(input,'focus',()=>{active=Number(input.dataset.pieAngle);select.value=active;refresh();});});
+      function pointer(e){if(response.angles.slice(0,active).some(v=>!finite(v))){live.textContent='Set the earlier sector angles before dragging this sector.';return;}
+        const rect=svg.getBoundingClientRect(),x=(e.clientX-rect.left)*400/rect.width-200,y=(e.clientY-rect.top)*400/rect.height-200;if(Math.hypot(x,y)<25)return;
+        const absolute=(Math.atan2(x,-y)*180/Math.PI+360)%360,start=response.angles.slice(0,active).reduce((s,v)=>s+(Number(v)||0),0),relative=(absolute-start%360+360)%360,snap=Number(c.angleStep)||1,angle=Math.min(360,Math.max(0,Math.round(relative/snap)*snap));setAngle(active,angle);
+      }
+      listen(svg,'pointerdown',e=>{if(e.button!==0)return;dragging=true;svg.setPointerCapture(e.pointerId);pointer(e);e.preventDefault();});listen(svg,'pointermove',e=>{if(dragging)pointer(e);});listen(svg,'pointerup',()=>dragging=false);listen(svg,'pointercancel',()=>dragging=false);
+      listen(svg,'keydown',e=>{const key=e.key;if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','Delete','Backspace'].includes(key))return;e.preventDefault();if(key==='ArrowLeft'||key==='ArrowRight'){active=(active+(key==='ArrowRight'?1:-1)+c.categories.length)%c.categories.length;select.value=active;refresh('Selected '+c.categories[active]+'.');return;}if(key==='Delete'||key==='Backspace'){setAngle(active,null);return;}setAngle(active,key==='Home'?0:Math.max(0,Math.min(360,(Number(response.angles[active])||0)+(key==='ArrowUp'?1:-1)*(Number(c.angleStep)||1))));});
+      listen(host.querySelector('[data-pie-clear]'),'click',()=>{response.angles.fill(null);refresh('Sector angles cleared.');notify();});
+    }else{
+      const c=q.graph;response.values=Array.isArray(response.values)?response.values:Array(c.categories.length).fill(null);
+      let selected=0,dragging=false;const svg=host.querySelector('.graph-plot-canvas'),scale=host.querySelector('[data-graph-field="step"]');
+      const hasScale=()=>finite(response.step)&&Number(response.step)>0;
+      function refresh(announcement){svg.innerHTML=gridSVG(c,response.values,response.step,{editable:true,selected,hasScale:hasScale()});host.querySelectorAll('[data-graph-value]').forEach(input=>{const v=response.values[Number(input.dataset.graphValue)];if(document.activeElement!==input)input.value=finite(v)?v:'';if(hasScale())input.max=Number(response.step)*10;else input.removeAttribute('max');input.setAttribute('aria-invalid',String(finite(v)&&(Number(v)<0||(hasScale()&&Number(v)>Number(response.step)*10))));});host.querySelectorAll('[data-graph-range]').forEach(input=>{input.disabled=!hasScale();input.max=(Number(response.step)||1)*10;input.value=Number(response.values[Number(input.dataset.graphRange)])||0;});
+        const out=response.values.some(v=>finite(v)&&(Number(v)<0||(hasScale()&&Number(v)>Number(response.step)*10)));
+        live.textContent=announcement||(out?'Some plotted values do not fit this scale. Check the scale or those values.':hasScale()?c.categories[selected]+': '+(finite(response.values[selected])?fmt(response.values[selected]):'not plotted')+'.':'Choose a vertical scale before plotting.');
+      }
+      function setValue(i,value){selected=i;response.values[i]=value;refresh();notify();}
+      host.querySelectorAll('[data-graph-field]').forEach(input=>listen(input,'change',e=>{const field=input.dataset.graphField;response[field]=field==='step'?(e.target.value===''?null:Number(e.target.value)):e.target.value;refresh();notify();}));
+      host.querySelectorAll('[data-graph-value]').forEach(input=>{listen(input,'input',e=>{const v=e.target.value;setValue(Number(input.dataset.graphValue),v===''?null:Number(v));});listen(input,'focus',()=>{selected=Number(input.dataset.graphValue);refresh();});});
+      host.querySelectorAll('[data-graph-range]').forEach(input=>listen(input,'input',e=>setValue(Number(input.dataset.graphRange),Number(e.target.value))));
+      function pointValue(e,isDown){if(!hasScale()){live.textContent='Choose a vertical scale first.';scale.focus();return false;}
+        const rect=svg.getBoundingClientRect(),x=(e.clientX-rect.left)*G.w/rect.width,y=(e.clientY-rect.top)*G.h/rect.height;if(isDown&&(x<G.x||x>G.x+G.pw||y<G.y-10||y>G.y+G.ph+10))return false;
+        if(isDown){const xs=positions(c);selected=xs.reduce((best,pos,i)=>Math.abs(pos-x)<Math.abs(xs[best]-x)?i:best,0);}
+        const snap=Number(c.snap)||1,v=Math.max(0,Math.min(Number(response.step)*10,(G.y+G.ph-y)/G.ph*Number(response.step)*10));setValue(selected,Number((Math.round(v/snap)*snap).toFixed(8)));return true;
+      }
+      listen(svg,'pointerdown',e=>{if(e.button!==0)return;dragging=pointValue(e,true);if(dragging){svg.setPointerCapture(e.pointerId);e.preventDefault();}});listen(svg,'pointermove',e=>{if(dragging)pointValue(e,false);});listen(svg,'pointerup',()=>dragging=false);listen(svg,'pointercancel',()=>dragging=false);
+      listen(svg,'keydown',e=>{const k=e.key;if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','Delete','Backspace'].includes(k))return;e.preventDefault();if(k==='ArrowLeft'||k==='ArrowRight'){selected=(selected+(k==='ArrowRight'?1:-1)+c.categories.length)%c.categories.length;refresh();return;}if(k==='Delete'||k==='Backspace'){setValue(selected,null);return;}if(!hasScale()){scale.focus();live.textContent='Choose a scale before adjusting a value.';return;}setValue(selected,k==='Home'?0:Math.max(0,Math.min(Number(response.step)*10,(Number(response.values[selected])||0)+(k==='ArrowUp'?1:-1)*(Number(c.snap)||1))));});
+      listen(host.querySelector('[data-graph-clear]'),'click',()=>{response.values.fill(null);refresh('Plotted values cleared. Labels and scale are unchanged.');notify();});
+    }
+    return ()=>controller.abort();
+  }
+  const api={readHTML,editorHTML,bindEditor,COLOURS};root.GraphUI=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+;
+/* Restricted arithmetic parser; typed text is never executed as JavaScript. */
+(function(root){'use strict';
+function calculate(text, previousResult){
+ const source=String(text).replace(/×/g,'*').replace(/÷/g,'/').replace(/[−–]/g,'-').trim();
+ if(!source)throw new Error('Enter a calculation first.');
+ if(source.length>140)throw new Error('Keep the calculation within 140 characters.');
+ const tokens=[],lex=/\s*(?:(\d+(?:\.\d*)?|\.\d+)([eE][+-]?\d+)?|(Ans)|([()+\-*/%]))/y;
+ let offset=0;
+ while(offset<source.length){lex.lastIndex=offset;const match=lex.exec(source);if(!match)throw new Error('Use numbers, brackets, +, −, ×, ÷ and % only.');tokens.push(match[1]?(match[1]+(match[2]||'')):match[3]||match[4]);offset=lex.lastIndex;}
+ let at=0,depth=0;
+ const finite=value=>{if(!Number.isFinite(value))throw new Error('The result is too large. Try a smaller calculation.');return value;};
+ function atom(){
+  if(++depth>60)throw new Error('Use fewer nested brackets or signs.');
+  let value;
+  if(tokens[at]==='+'){at++;value=atom();}
+  else if(tokens[at]==='-'){at++;value=-atom();}
+  else if(tokens[at]==='('){at++;value=add();if(tokens[at++]!==')')throw new Error('Check that every opening bracket has a closing bracket.');}
+  else if(tokens[at]==='Ans'){at++;if(!Number.isFinite(previousResult))throw new Error('There is no previous result yet.');value=previousResult;}
+  else {const token=tokens[at++];if(!token||!(/^(?:\d|\.\d)/.test(token)))throw new Error('Check the numbers and operators in your calculation.');value=finite(Number(token));}
+  if(tokens[at]==='%'){at++;value/=100;if(tokens[at]==='%')throw new Error('Use one percent sign for each number.');}
+  depth--;return finite(value);
+ }
+ function mult(){let value=atom();while(tokens[at]==='*'||tokens[at]==='/'){const op=tokens[at++],right=atom();if(op==='/'&&right===0)throw new Error('Cannot divide by zero.');value=finite(op==='*'?value*right:value/right);}return value;}
+ function add(){let value=mult();while(tokens[at]==='+'||tokens[at]==='-'){const op=tokens[at++],right=mult();value=finite(op==='+'?value+right:value-right);}return value;}
+ const result=add();if(at!==tokens.length)throw new Error('Put an operator between numbers or brackets.');
+ return Object.is(result,-0)?0:result;
+}
+const api={calculate};
+root.StatsCalculator=api;
+if(typeof module!=='undefined'&&module.exports)module.exports=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+;
+(function(root){
+'use strict';
+const E=typeof module==='object'&&module.exports?require('./engine.js'):root.StatsEngine;
+const VERSION=1;
+const copy=v=>JSON.parse(JSON.stringify(v));
+const REQUIREMENTS=[{skill:'vocabulary'},{skill:'bar'},{skill:'tables'},{family:'draw_bar'},{skill:'line'},{family:'draw_line'},{skill:'pie'},{family:'draw_pie'},{skill:'summary'}];
+function freshProfile(){return Object.fromEntries(E.SKILLS.map(s=>[s.id,{level:1,streak:0,attempts:0,independent:0,correct:0,last:-1}]));}
+function start(areaId,size=24,previous=null){
+ const state={version:VERSION,areaId,size:[12,24,40].includes(+size)?+size:24,seed:Date.now().toString(36)+'-'+Math.random().toString(36).slice(2),counter:0,phase:previous?'practice':'intro',introIndex:0,view:'question',history:[],profile:previous?copy(previous.profile):freshProfile(),queue:[],current:null,finished:false,created:new Date().toISOString()};
+ next(state);return state;
+}
+function blank(q){if(q.kind==='graph')return {title:'',xLabel:'',yLabel:'',step:null,values:q.graph.values.map(()=>null)};if(q.kind==='pie')return {title:'',angles:q.pie.angles.map(()=>null)};if(q.kind==='table')return q.groups.map(()=>null);return '';}
+function practiceHistory(s){return s.history.filter(h=>!h.q.intro);}
+function unmet(s){const h=practiceHistory(s);return REQUIREMENTS.filter(r=>!h.some(x=>r.family?x.q.family===r.family:x.q.skill===r.skill&&!['graph','pie'].includes(x.q.kind)));}
+function familyExists(id){return E.FAMILIES.some(f=>f.id===id);}
+function select(s){
+ const h=practiceHistory(s),done=h.length,missing=unmet(s),remaining=s.size-done;
+ if(missing.length&&remaining<=missing.length)return {...missing[0],required:true};
+ const immediate=s.queue.findIndex(x=>x.type==='immediate'&&x.due<=done);
+ if(immediate>=0)return s.queue.splice(immediate,1)[0];
+ const due=s.queue.findIndex(x=>x.due<=done);
+ if(due>=0&&done%3===1)return s.queue.splice(due,1)[0];
+ if(missing.length)return {...missing[0],required:true};
+ const ranked=E.SKILLS.map(skill=>{const p=s.profile[skill.id]||{attempts:0,independent:0,correct:0,last:-1};const stale=done-p.last;const need=p.independent?(1-p.correct/p.independent):1;return {skill:skill.id,weight:stale*.7+need*3-(h.at(-1)?.q.skill===skill.id?4:0)};}).sort((a,b)=>b.weight-a.weight);
+ return {skill:ranked[0].skill};
+}
+function getGenerated(s,pick){
+ const h=practiceHistory(s),used=new Set(h.map(x=>x.q.signature)),previous=h.at(-1)?.q;
+ let fam=pick.family&&familyExists(pick.family)?pick.family:undefined;
+ let skill=pick.skill||(E.FAMILIES.find(f=>f.id===fam)?.skill)||'drawing';
+ let level=Math.min(3,Math.max(1,s.profile[skill]?.level||1));
+ if(pick.type==='immediate')level=Math.max(1,level-1);
+ const recent=h.filter(x=>x.q.skill===skill).slice(-3).map(x=>x.q.family);
+ let q;
+ for(let tries=0;tries<60;tries++){
+  q=E.generate({areaId:s.areaId,skill,level,seed:s.seed+':'+s.counter++,familyId:fam,exclude:fam?[]:recent});
+  if(!used.has(q.signature))break;
+  if(tries===20&&!pick.required)fam=undefined;
+ }
+ q.intro=false;
+ return {q,supportedAuto:pick.type==='immediate',revisit:pick.type==='revisit',response:blank(q),checked:false,help:false,showData:false};
+}
+function next(s){
+ if(s.current&&!s.current.checked)return s.current;
+ if(s.phase==='intro'){
+  if(s.introIndex<E.INTRO.length){const q=copy(E.INTRO[s.introIndex]);q.intro=true;s.current={q,response:blank(q),checked:false,help:false,supportedAuto:true,showData:false};return s.current;}
+  s.phase='practice';
+ }
+ if(practiceHistory(s).length>=s.size){s.finished=true;s.view='report';s.current=null;return null;}
+ s.current=getGenerated(s,select(s));return s.current;
+}
+function parse(value,unit=''){
+ if(E.parseNumber)return E.parseNumber(value,unit);
+ if(typeof value==='number')return Number.isFinite(value)?value:NaN;
+ let x=String(value??'').trim();
+ if(unit&&x.endsWith(unit))x=x.slice(0,-unit.length).trim();
+ x=x.replace(/^£\s*/,'');
+ if(!/^[+−-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(x.replace(/(?<=\d),(?=\d{3}(?:,|\.|$))/g,'')))return NaN;
+ return Number(x.replace(/,/g,'').replace('−','-'));
+}
+function validate(q,response){
+ if(q.kind==='mcq')return q.options.some(o=>String(o.value)===String(response))?'':'Choose one answer before checking.';
+ if(q.kind==='numeric')return String(response??'').trim()!==''&&Number.isFinite(parse(response,q.unit||''))?'':'Enter a number in the answer box before checking.';
+ if(q.kind==='table')return Array.isArray(response)&&response.length===q.groups.length&&response.every(v=>v!==null&&String(v).trim()!==''&&Number.isInteger(Number(v))&&Number(v)>=0)?'':'Enter a whole-number frequency in every row. Use 0 where there are no values.';
+ if(q.kind==='graph'){
+  if(!response?.title||!response.xLabel||!response.yLabel)return 'Choose a title and both axis labels on the graph.';
+  if(!Number.isFinite(Number(response.step))||Number(response.step)<=0)return 'Choose the vertical scale before plotting.';
+  if(!Array.isArray(response.values)||response.values.length!==q.graph.values.length||response.values.some(v=>v===null||v===''||!Number.isFinite(Number(v))))return 'Plot every bar or point. A value of 0 still needs to be entered.';
+  if(response.values.some(v=>Number(v)<0||Number(v)>Number(response.step)*10))return 'Keep each plotted value within the scale you selected, or choose a larger scale.';
+  return '';
+ }
+ if(q.kind==='pie'){
+  if(!response?.title)return 'Choose a title for your pie chart.';
+  if(!Array.isArray(response.angles)||response.angles.length!==q.pie.angles.length||response.angles.some(v=>v===null||v===''||!Number.isFinite(Number(v))||Number(v)<0||Number(v)>360))return 'Set an angle from 0° to 360° for every sector.';
+  return '';
+ }
+ return 'This question could not be checked. Start a fresh round.';
+}
+function submit(s,response){
+ const c=s.current;
+ if(!c||c.checked)return {ignored:true};
+ const error=validate(c.q,response);if(error)return {error};
+ c.response=copy(response);c.result=E.evaluate(c.q,c.response);c.checked=true;
+ const supported=!!(c.q.intro||c.help||c.supportedAuto||c.showData);
+ const record={q:copy(c.q),response:copy(c.response),result:copy(c.result),supported,autoSupport:!!c.supportedAuto,at:new Date().toISOString()};
+ s.history.push(record);
+ if(c.q.intro){s.introIndex++;return c.result;}
+ const done=practiceHistory(s).length,p=s.profile[c.q.skill]||(s.profile[c.q.skill]={level:1,streak:0,attempts:0,independent:0,correct:0,last:-1});
+ p.attempts++;p.last=done;
+ if(!supported){p.independent++;if(c.result.correct){p.correct++;p.streak++;if(p.streak>=2){p.level=Math.min(3,p.level+1);p.streak=0;}}else{p.streak=0;p.level=Math.max(1,p.level-1);}}
+ else if(!c.result.correct)p.streak=0;
+ if(!c.result.correct){
+  s.queue=s.queue.filter(x=>!(x.skill===c.q.skill&&x.type==='revisit'));
+  if(!c.supportedAuto)s.queue.unshift({type:'immediate',skill:c.q.skill,family:c.q.family,due:done});
+  s.queue.push({type:'revisit',skill:c.q.skill,due:done+3});
+ }
+ return c.result;
+}
+function support(s){if(s?.current&&!s.current.checked&&!s.current.q.intro)s.current.help=true;}
+function metrics(s){
+ const h=practiceHistory(s),ind=h.filter(x=>!x.supported),guided=h.filter(x=>x.supported);
+ const bySkill=E.SKILLS.map(skill=>{const entries=h.filter(x=>x.q.skill===skill.id),independent=entries.filter(x=>!x.supported),correct=independent.filter(x=>x.result.correct).length,supported=entries.filter(x=>x.supported),recent=independent.slice(-3),status=!entries.length?'Not yet tried':!independent.length?'Supported practice':recent.length>=3&&recent.every(x=>x.result.correct)?'Secure in this round':correct/independent.length>=.6?'Developing':'More practice';return {...skill,attempts:entries.length,independent:independent.length,correct,supported:supported.length,supportedCorrect:supported.filter(x=>x.result.correct).length,status};});
+ return {total:h.length,independent:ind.length,independentCorrect:ind.filter(x=>x.result.correct).length,supported:guided.length,supportedCorrect:guided.filter(x=>x.result.correct).length,intro:s.history.filter(x=>x.q.intro).length,bySkill};
+}
+const api={VERSION,REQUIREMENTS,start,next,submit,support,validate,blank,metrics,practiceHistory,unmet,freshProfile};
+root.StatsAdaptive=api;if(typeof module==='object'&&module.exports)module.exports=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+;
+(function(){
+'use strict';
+const E=window.StatsEngine,A=window.StatsAdaptive,G=window.GraphUI,$=id=>document.getElementById(id);
+const STORAGE='statistics-practice-v1',PREFS='statistics-display-v1';
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const lines=x=>esc(x).replace(/\.\s+(?=[A-Z“])/g,'.<br>');
+const paras=arr=>(Array.isArray(arr)?arr:[arr]).filter(Boolean).map(x=>`<p>${lines(x)}</p>`).join('');
+const fmt=x=>typeof x==='number'?Number(x.toFixed(4)).toLocaleString('en-GB',{maximumFractionDigits:4}):String(x??'');
+let state=null,prefs={theme:'light',overlay:'off',strength:12,text:'1'},storageOK=true,saveTimer,toastTimer,cleanupGraph=null,calcResult=null,justCalculated=false;
+const ORIGINAL_HTML='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+const TARGETS={vocabulary:'Read the definitions and identify the feature the question names.',tables:'Place each value in one group only, then check that the frequencies add to the total number of records.',bar:'Read the numbered scale before finding a bar height, total or difference.',line:'Match the time or day to its point, then compare the requested readings.',pie:'Link each sector to the key and remember that the complete circle represents the whole total.',summary:'Use every relevant reading for the mean; use the largest and smallest readings for the range.',drawing:'Choose clear labels and a scale that fits, then check each plotted value against the table.'};
+function toast(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,4200);}
+function save(){clearTimeout(saveTimer);try{if(state)localStorage.setItem(STORAGE,JSON.stringify(state));localStorage.setItem(PREFS,JSON.stringify(prefs));storageOK=true;$('saveStatus').textContent='Saved on this device';}catch(_){storageOK=false;$('saveStatus').textContent='This session only';}}
+function scheduleSave(){clearTimeout(saveTimer);saveTimer=setTimeout(save,180);}
+function load(){try{const p=JSON.parse(localStorage.getItem(PREFS)||'null');if(p&&typeof p==='object')prefs={...prefs,...p};const s=JSON.parse(localStorage.getItem(STORAGE)||'null');if(s?.version===A.VERSION&&E.AREAS.some(a=>a.id===s.areaId)&&Array.isArray(s.history)&&s.profile&&[12,24,40].includes(s.size))state=s;}catch(_){storageOK=false;}}
+function applyPrefs(){if(!['light','dark'].includes(prefs.theme))prefs.theme='light';if(!['off','blue','yellow','mint'].includes(prefs.overlay))prefs.overlay='off';prefs.strength=Math.max(5,Math.min(25,Number(prefs.strength)||12));if(!['1','1.12','1.24'].includes(String(prefs.text)))prefs.text='1';document.documentElement.dataset.theme=prefs.theme;document.documentElement.style.setProperty('--reading',prefs.text);document.documentElement.style.setProperty('--overlay',({off:'transparent',blue:'#8fbfe7',yellow:'#ffe88a',mint:'#96d8b5'})[prefs.overlay]);document.documentElement.style.setProperty('--strength',prefs.overlay==='off'?0:prefs.strength/100);$('themeSelect').value=prefs.theme;$('overlaySelect').value=prefs.overlay;$('overlayStrength').value=prefs.strength;$('strengthLabel').textContent=prefs.strength+'%';$('textSelect').value=String(prefs.text);}
+function area(){return E.AREAS.find(x=>x.id===state?.areaId);}
+function renderHome(){window.scrollTo({top:0,behavior:'instant'});if(state){state.resumeView=state.view==='report'?'report':state.resumeView||'question';state.view='home';}cleanupGraph?.();cleanupGraph=null;closeCalc();$('home').hidden=false;$('workspace').hidden=true;$('resumeBanner').hidden=!state;if(state){$('resumeText').textContent=`${area()?.label||'Your activity'} · ${state.finished?'Round complete — open your report.':'Your answers and current question are saved.'}`;$('resumeButton').textContent=state.finished?'Open report':'Resume activity';$('areaSelect').value=state.areaId;$('sizeSelect').value=state.size;}if(!storageOK)$('saveStatus').textContent='This session only';}
+function displayQuestion(){if(!state)return renderHome();state.view='question';state.resumeView='question';$('home').hidden=true;$('workspace').hidden=false;$('areaName').textContent=area()?.label||'';renderQuestion(true);save();}
+function setSupport(){A.support(state);save();}
+function tableHTML(t){if(!t)return '';return `<div class="table-scroll"><table>${t.caption?`<caption>${esc(t.caption)}</caption>`:''}<thead><tr>${(t.headers||[]).map(h=>`<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${(t.rows||[]).map(row=>`<tr>${row.map((x,i)=>i===0?`<th scope="row">${esc(x)}</th>`:`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
+function readDataTable(chart){const isPie=chart.kind==='pie';return tableHTML({headers:[chart.xLabel||'Category',isPie?'Frequency':chart.yLabel||'Value'],rows:chart.categories.map((x,i)=>[x,fmt(chart.values[i])])});}
+function freshResponseIfNeeded(c){if(c.response===undefined)c.response=A.blank(c.q);}
+function answerHTML(q,c){const disabled=c.checked?'disabled':'';
+ if(q.kind==='mcq')return `<fieldset class="choices" style="border:0;padding:0" aria-label="Choose one answer">${q.options.map((o,i)=>{const selected=String(c.response)===String(o.value),correct=c.checked&&String(o.value)===String(q.answer);return `<label class="choice ${correct?'correct':''} ${c.checked&&selected&&!c.result.correct?'incorrect':''}"><input type="radio" name="answer" value="${esc(o.value)}" ${selected?'checked':''} ${disabled}><span class="letter" aria-hidden="true">${String.fromCharCode(65+i)}</span><span>${lines(o.label)}</span></label>`;}).join('')}</fieldset>`;
+ if(q.kind==='numeric')return `<div class="answer-area"><label for="answerInput">Your answer</label><div class="answer-line"><input id="answerInput" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="${esc(c.response)}" ${disabled} aria-describedby="answerUnit"><span class="unit" id="answerUnit">${esc(q.unit||'')}</span></div></div>`;
+ if(q.kind==='table')return `<div class="q-section"><h3>Complete the frequency table</h3><div class="table-scroll"><table><thead><tr><th scope="col">${esc(q.groupLabel||'Group')}</th><th scope="col">Frequency</th></tr></thead><tbody>${q.groups.map((g,i)=>`<tr><th scope="row">${esc(g.label)}</th><td><input class="freq-input" type="number" inputmode="numeric" min="0" step="1" data-frequency="${i}" aria-label="Frequency for ${esc(g.label)}" value="${c.response[i]===null?'':esc(c.response[i])}" ${disabled}></td></tr>`).join('')}</tbody></table></div></div>`;
+ if(q.kind==='graph'||q.kind==='pie')return G.editorHTML(q,c.response,{disabled:c.checked});
+ return '';
+}
+function feedbackHTML(q,c){const r=c.result,checks=r.checks||[],details=(r.details||q.explanation||[]).filter(t=>!checks.some(ch=>t===ch.label+': '+ch.why));
+ return `<section class="feedback ${r.correct?'':'bad'}" aria-labelledby="feedbackTitle"><h3 id="feedbackTitle" tabindex="-1">${r.correct?'That’s right.':'Let’s look at that together.'}</h3>${paras(r.summary)}${checks.length?`<ul class="feedback-list">${checks.map(x=>`<li><div class="check-label"><span class="check-icon ${x.correct?'pass':'fail'}" aria-hidden="true">${x.correct?'✓':'!'}</span><span>${esc(x.label)} — ${x.correct?'correct':'needs a change'}</span></div>${!x.correct?paras(x.why||`Expected ${Array.isArray(x.expected)?x.expected.join(', '):x.expected}; you entered ${Array.isArray(x.actual)?x.actual.join(', '):x.actual}.`):''}</li>`).join('')}</ul>`:''}${paras(details)}${!r.correct&&q.kind==='mcq'?`<p class="correct-answer"><strong>Correct answer:</strong><br>${lines(q.options.find(o=>String(o.value)===String(q.answer))?.label||q.answer)}</p>`:''}${(c.help||c.supportedAuto||c.showData)&&!q.intro?'<p class="support-note">This is recorded as supported practice.</p>':''}</section>${modelHTML(q,c)}`;
+}
+function modelHTML(q,c){if(c.result.correct||!['graph','pie'].includes(q.kind))return '';let chart;if(q.kind==='graph'){const g=q.graph;chart={kind:g.kind,title:g.title,xLabel:g.xLabel,yLabel:g.yLabel,categories:g.categories,values:g.values,step:g.validSteps[0]};}else{const p=q.pie;chart={kind:'pie',title:p.title,categories:p.categories,values:p.counts||p.angles,showAngles:true};}return `<details class="solution"><summary>See a completed example for this data</summary><p>Compare each part with your graph.</p>${G.readHTML(chart,{id:'model-chart'})}${q.kind==='pie'?'<p>Also practise drawing sectors with a real protractor on paper.</p>':''}</details>`;}
+function renderQuestion(focus=false){
+ cleanupGraph?.();cleanupGraph=null;
+ const c=state.current;if(!c){A.next(state);if(state.finished)return renderReport();return renderQuestion(focus);}
+ const q=c.q;freshResponseIfNeeded(c);if(!canCalc())closeCalc();
+ const graph=['graph','pie'].includes(q.kind),intro=!!q.intro,teach=q.teaching||q.teach;
+ $('questionHost').innerHTML=`<div class="question-top"><span class="tiny">${intro?'A short introduction':q.calculator?'Calculator available':'Try without a calculator'}</span>${q.calculator&&!intro?`<button class="btn secondary small" type="button" id="calcToggle" aria-expanded="${!$('calculator').hidden}" aria-controls="calculator">${$('calculator').hidden?'Open calculator':'Close calculator'}</button>`:''}</div><article class="question-card"><div class="q-heading"><h2 id="questionTitle" tabindex="-1">${intro?'Read, then choose':graph?'Build your graph':'Read the question'}</h2><span class="tiny">${intro?'Definitions and methods':'Take your time'}</span></div><div class="q-body">${teach?`<div class="lesson"><div class="eyebrow">Get the meaning first</div>${paras(teach)}</div>`:''}${c.supportedAuto&&!c.checked&&!intro?`<div class="lesson"><h3>Try it with a little support</h3>${paras(q.hint||'Use the method from the previous explanation with this new data.')}</div>`:''}<div class="prompt">${paras(q.prompt)}</div>${q.rawData?`<div class="q-section"><h3>Recorded data</h3><div class="raw-data" aria-label="Recorded values">${q.rawData.map(x=>`<span>${esc(x)}</span>`).join('')}</div></div>`:''}${q.table?tableHTML(q.table):''}${q.chart?`<div class="reading-visual">${G.readHTML(q.chart,{id:'question-chart'})}</div>${!intro&&(!c.checked||c.showData)?`<div class="data-support">${c.showData?`<p class="tiny">Data view — this question counts as supported practice.</p>${readDataTable(q.chart)}`:`<button type="button" class="btn quiet small" id="dataViewButton">Show data as a table for support</button>`}</div>`:''}`:''}<form id="answerForm"><p class="paper-note">${graph?'Build the graph here. Keep calculations on your paper.':q.kind==='mcq'?'Choose one answer. Use paper for any working.':'Use paper for your working. Enter only your final answer.'}</p>${answerHTML(q,c)}${!c.checked?`<div class="tools"><button class="btn" id="checkButton" type="submit">Check ${graph?'graph':'answer'}</button><button class="btn secondary" id="hintButton" type="button" aria-expanded="${c.help||c.supportedAuto}">${c.help?'Hint shown':'A little help'}</button></div><div class="validation" id="validation" role="alert"></div>${c.help?`<div class="hint">${paras(q.hint||'Read the definition and identify the information the question asks for.')}</div>`:''}`:''}</form>${c.checked?feedbackHTML(q,c)+`<div class="next-row"><button class="btn" id="nextButton" type="button">${!intro&&A.practiceHistory(state).length>=state.size?'See my report':intro&&state.introIndex>=E.INTRO.length?'Start practice':c.result.correct?'Next question':'Try a fresh question'}</button></div>`:''}</div></article><p class="q-footnote">${intro?'You will practise with different questions after the introduction.':'Original exam-style practice. Written methods and practical ruler/protractor skills should also be practised on paper.'}</p>`;
+ $('calcToggle')?.addEventListener('click',toggleCalc);
+ $('answerForm')?.addEventListener('submit',e=>{e.preventDefault();checkAnswer();});
+ $('answerForm')?.querySelectorAll('input[name=answer]').forEach(input=>input.addEventListener('change',()=>{c.response=input.value;scheduleSave();}));
+ $('answerInput')?.addEventListener('input',e=>{c.response=e.target.value;scheduleSave();});
+ $('answerForm')?.querySelectorAll('[data-frequency]').forEach(input=>input.addEventListener('input',()=>{c.response[Number(input.dataset.frequency)]=input.value===''?null:Number(input.value);scheduleSave();}));
+ if(graph&&!c.checked)cleanupGraph=G.bindEditor($('answerForm'),q,c.response,()=>scheduleSave());
+ $('hintButton')?.addEventListener('click',()=>{A.support(state);c.help=true;save();renderQuestion();$('hintButton')?.focus();});
+ $('dataViewButton')?.addEventListener('click',()=>{if(!c.checked){A.support(state);c.showData=true;}else c.showData=true;save();renderQuestion();});
+ $('nextButton')?.addEventListener('click',()=>{closeCalc();A.next(state);save();if(state.finished)renderReport();else renderQuestion(true);});
+ if(focus){$('questionTitle').focus({preventScroll:true});$('questionHost').scrollIntoView({behavior:'instant',block:'start'});}
+}
+function checkAnswer(){const result=A.submit(state,state.current.response);if(result.error){$('validation').textContent=result.error;return;}if(result.ignored)return;save();renderQuestion();$('feedbackTitle')?.focus({preventScroll:true});$('feedbackTitle')?.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function heatClass(status){return status==='Secure in this round'?'good':status==='More practice'?'bad':'mid';}
+function reportHTML(){const m=A.metrics(state),targets=m.bySkill.filter(s=>s.attempts&&s.status!=='Secure in this round').sort((a,b)=>{const x=a.independent?a.correct/a.independent:0,y=b.independent?b.correct/b.independent:0;return x-y;}).slice(0,3);return `<article class="report"><div class="eyebrow">Your practice report</div><h1 id="reportTitle" tabindex="-1" style="font-size:2rem">${state.finished?'A round of useful practice.':'Your practice so far.'}</h1><p class="muted">${esc(area()?.label)}<br>${m.total} practice question${m.total===1?'':'s'} answered.</p><div class="score-grid"><div class="score-box"><strong>${m.independentCorrect} / ${m.independent}</strong><span>Correct independently<br>First checked answers without help</span></div><div class="score-box"><strong>${m.supportedCorrect} / ${m.supported}</strong><span>Correct with support<br>Hints, data views or guided follow-ups</span></div><div class="score-box"><strong>${m.intro} / ${E.INTRO.length}</strong><span>Definition checks completed<br>Kept separate from practice results</span></div></div><p class="report-note tiny">This describes the questions answered in this round.<br>It is not an exam mark or a prediction of passing.<br>A graph answer is correct when all of its requested parts are correct; the feedback shows each part separately.</p><h2>Skills at a glance</h2><div class="table-scroll"><table><thead><tr><th scope="col">Skill</th><th scope="col">Independent</th><th scope="col">With support</th><th scope="col">Practice picture</th></tr></thead><tbody>${m.bySkill.map(s=>`<tr><th scope="row">${esc(s.label)}</th><td>${s.correct} / ${s.independent}</td><td>${s.supportedCorrect} / ${s.supported}</td><td><span class="heat-status ${heatClass(s.status)}">${esc(s.status)}</span></td></tr>`).join('')}</tbody></table></div><p class="tiny">“Secure in this round” means the latest three independent answers in that skill were correct.<br>A small number of questions gives only a limited picture.</p>${targets.length?`<h2>Useful next steps</h2>${targets.map(t=>`<div class="target"><h3>${esc(t.label)}</h3><p>${esc(TARGETS[t.id]||'Keep practising this skill with fresh data.')}</p></div>`).join('')}`:m.total?'<div class="notice">Keep practising with fresh data and on paper to check that you can use the same methods in different situations.</div>':'<div class="empty-note">Your practice results will appear here after the introduction.</div>'}<div class="report-controls">${!state.finished?'<button class="btn" type="button" id="returnButton">Return to activity</button>':'<button class="btn" type="button" id="moreButton">More practice with fresh questions</button>'}<button class="btn secondary" type="button" id="csvButton">Download results (CSV)</button><button class="btn secondary" type="button" id="printButton">Print report</button><button class="btn quiet" type="button" id="reportHomeButton">Choose a new round</button></div>${m.total?`<h2 class="review-heading">Review your answers</h2>${A.practiceHistory(state).map((h,i)=>`<details class="review-item"><summary>Question ${i+1} · ${h.result.correct?'Correct':'Review this answer'}${h.supported?' · with support':''}</summary><div class="prompt">${paras(h.q.prompt)}</div>${h.q.table?tableHTML(h.q.table):''}<p><strong>Your answer:</strong> ${esc(responseText(h.q,h.response))}</p>${paras(h.result.summary)}${paras(h.result.details||h.q.explanation)}${h.result.checks?.length?`<ul>${h.result.checks.filter(x=>!x.correct).map(x=>`<li>${esc(x.label)}: ${esc(x.why||'Check this part again.')}</li>`).join('')}</ul>`:''}</details>`).join('')}`:''}</article>`;}
+function renderReport(){if(!state)return;cleanupGraph?.();cleanupGraph=null;state.view='report';state.resumeView='report';closeCalc();$('home').hidden=true;$('workspace').hidden=false;$('areaName').textContent=area()?.label||'';$('questionHost').innerHTML=reportHTML();$('returnButton')?.addEventListener('click',displayQuestion);$('moreButton')?.addEventListener('click',()=>{state=A.start(state.areaId,state.size,state);displayQuestion();});$('csvButton')?.addEventListener('click',downloadCSV);$('printButton')?.addEventListener('click',()=>{$('printHost').innerHTML=reportHTML();window.print();});$('reportHomeButton')?.addEventListener('click',()=>{state.view='home';save();renderHome();});save();$('reportTitle')?.focus({preventScroll:true});$('questionHost').scrollIntoView({behavior:'instant',block:'start'});}
+function responseText(q,r){if(q.kind==='mcq')return q.options.find(o=>String(o.value)===String(r))?.label||String(r);if(q.kind==='graph')return `Title: ${r.title}; horizontal axis: ${r.xLabel}; vertical axis: ${r.yLabel}; scale step: ${r.step}; values: ${r.values.join(', ')}`;if(q.kind==='pie')return `Title: ${r.title}; sector angles: ${r.angles.join('°, ')}°`;if(Array.isArray(r))return r.join(', ');return String(r);}
+function downloadBlob(content,type,name){const url=URL.createObjectURL(new Blob([content],{type}));const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);}
+function downloadCSV(){if(!state)return;const rows=[['Question','Skill','Question text','Answer','Result','Support','Feedback']];A.practiceHistory(state).forEach((h,i)=>rows.push([i+1,E.SKILLS.find(x=>x.id===h.q.skill)?.label||h.q.skill,h.q.prompt.join(' '),responseText(h.q,h.response),h.result.correct?'Correct':'Needs review',h.supported?'With support':'Independent',[h.result.summary,...(h.result.details||[])].join(' ')]));const csv='\uFEFF'+rows.map(row=>row.map(v=>{let t=String(v??'');if(/^[=+@\-]/.test(t))t="'"+t;return '"'+t.replace(/"/g,'""')+'"';}).join(',')).join('\r\n');downloadBlob(csv,'text/csv;charset=utf-8','Statistics_Practice_Results.csv');}
+const DEFINITIONS=[['Data','Information collected to answer a question, such as the number of bookings each day.'],['Discrete data','Data with separate, countable values, such as 0, 1, 2 or 3 repairs.'],['Frequency','How many times a value or category occurs. It is a count, not the value being measured.'],['Tally','A way to count records using marks. A group of five has four marks crossed by a fifth mark.'],['Frequency table','A table that shows each value or group and how often it occurs. Each record belongs in one row.'],['Grouped data','Values organised into intervals. For integer counts, 0–4, 5–9 and 10–14 are equal-sized groups without overlap.'],['Axis / axes','An axis is one of the reference lines on a graph. The horizontal axis runs across; the vertical axis runs up and down. Axes is the plural of axis.'],['Axis label','The name of the information shown on an axis. Include units when needed, such as Time (minutes).'],['Scale and interval','A scale links positions to numbers. Equal distances on a linear scale must represent equal differences in value. An interval is the gap between two positions or values.'],['Bar chart','A chart that compares categories using bars. In this activity, category bars have equal widths and gaps; bar height shows the value.'],['Line graph','A graph with plotted points joined in order. It is useful for showing change over time.'],['Pie chart and sector','A pie chart shows parts of one whole. Each sector is a slice; the sector angles add to 360°.'],['Key / legend','An explanation of what colours, patterns or symbols represent.'],['Trend','The general pattern or direction in the recorded data. An overall increase does not mean every reading increased.'],['Mean','Add all relevant values, then divide by how many values there are. Count repeated values and zeros.'],['Range','Subtract the smallest value from the largest. Range describes spread; it is not an average.']];
+function glossary(){$('definitionContent').innerHTML='<dl>'+DEFINITIONS.map(([a,b])=>`<div class="legend-entry"><dt>${esc(a)}</dt><dd>${lines(b)}</dd></div>`).join('')+'</dl>';setSupport();$('definitionsDialog').showModal();}
+function graphGuide(){$('guideContent').innerHTML=`<div class="checklist-card"><h3>Bar charts and line graphs</h3><ol class="graph-checklist"><li>Give the graph a useful title.</li><li>Label both axes with what they show.<br>Include units where they are needed.</li><li>Use equal numerical steps on a linear scale.<br>Choose a scale that fits all the values.</li><li>Read each row of the table carefully and plot its value.</li><li>For a category bar chart, use equal-width bars and clear gaps.<br>For a line graph, join neighbouring time points in order.</li><li>Check every bar or point against the original data.</li></ol></div><div class="checklist-card"><h3>Pie charts</h3><p>The complete circle represents one whole total.</p><p>Sector angle = frequency ÷ total × 360°.</p><p>Check that all angles add to 360°.</p><p>Use a clear title and labels or a key to identify the sectors.</p></div><p class="tiny">This activity supplies equal bar widths, regular grid spacing and line connections.<br>You are checking and choosing the labels, scale and plotted values.<br>On paper, you need to draw the complete graph yourself using the equipment provided.</p>`;setSupport();$('guideDialog').showModal();}
+function about(){$('aboutContent').innerHTML=`<h3>Purpose and scope</h3><p>Learn vocabulary, read statistical information and construct charts in vocational situations.</p><p>The core content follows Pearson Edexcel Functional Skills Maths Level 1: tables, discrete and grouped discrete data, bar charts, line graphs, pie charts, mean and range.</p><p>These are original exam-style questions with generated data.<br>They are not copied past-paper questions or an official Pearson assessment.</p><h3>How the activity adapts</h3><p>Eight guided introduction checks teach key definitions and methods.</p><p>Practice starts with accessible examples.<br>Two consecutive independent correct answers in a skill increase its demand.<br>An incorrect answer triggers a fresh supported follow-up when there is room in the round, and schedules that skill for a later revisit.</p><p>Every completed round includes bar, line and pie construction, alongside reading and tables.<br>Coverage is protected even if several skills need extra practice.</p><p>Hints, definition/checklist use, data-table support and guided follow-ups are recorded as supported practice.<br>Calculator use on a permitted question does not count as extra support.<br>Blank or invalid entries are not scored.</p><h3>Interpreting the report</h3><p>The report separates independent answers, supported answers and introduction checks.<br>It only describes the questions answered in this round.<br>It does not assess written method marks or predict an examination result.</p><p>A drawing response is marked by its requested components.<br>Features provided by the tool, such as equal-width bars and automatically joined points, are not counted as independent drawing skills.</p><h3>Working on paper</h3><p>There are no on-screen working boxes.<br>Students should also practise drawing complete graphs using a ruler and protractor on paper.<br>The interactive activity develops labels, scales, plotting and sector angles.</p><h3>Question bank</h3><p>${E.FAMILIES.length} question families and ${E.AREAS.length} vocational choices.<br>Values, order and scenarios vary between rounds.<br>Core practice excludes Level 2-only content such as scatter diagrams, median and mode.</p><h3>Use and access</h3><p>Learning progress is stored only in the browser on this device when storage is available.<br>Use “Clear this learner’s practice” on shared devices.<br>The downloaded HTML activity works without an internet connection.</p><p>Common source-view shortcuts and context menus are discouraged during questions.<br>A browser page cannot provide secure examination lockdown.</p><h3>References</h3>${SOURCES.map(s=>`<div class="source-item"><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(s.title)}</strong></a><p>${lines(s.detail)}</p></div>`).join('')}<p class="tiny" style="margin-top:20px">Scope checked 23 November 2026.<br>Independent teaching material, without Pearson or Edexcel endorsement.</p>`;$('aboutDialog').showModal();}
+const SOURCES=[{title:'Pearson Edexcel Functional Skills Mathematics specification',url:'https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/pearson-edexcel-functional-skills-in-maths-spec-l1-l2.pdf',detail:'Level 1 content statements 27–29 cover representation, grouping, mean and range.'},{title:'Pearson specification exemplification',url:'https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/functional-skills-maths-level-1-2-specification-2019-exemplification.pdf',detail:'Includes sensible graph scales, equal groups of discrete data and pie-sector angles.'},{title:'Level 1 exemplar Set 6',url:'https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/functional-skills-maths-level-1-exemplar-set-6-learner-1.pdf',detail:'Bar-chart construction and examiner commentary provide a model for labels, scales and accurate plotting.'},{title:'Teaching the Fundamentals: Level 1 pie charts',url:'https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/teaching-the-fundamentals-level-1-pie-charts.pdf',detail:'Construction, sector angles, interpretation and common errors.'}];
+function canCalc(){return !!state&&state.view==='question'&&!!state.current?.q.calculator&&!state.current.q.intro&&!state.finished;}
+function closeCalc(focus=false){$('calculator').hidden=true;const b=$('calcToggle');if(b){b.textContent='Open calculator';b.setAttribute('aria-expanded','false');if(focus)b.focus();}}
+function toggleCalc(){if(!canCalc())return closeCalc();const open=$('calculator').hidden;$('calculator').hidden=!open;const b=$('calcToggle');if(b){b.textContent=open?'Close calculator':'Open calculator';b.setAttribute('aria-expanded',String(open));}if(open){fitCalc();$('calcInput').focus();}}
+function equals(){if(!canCalc())return closeCalc();try{calcResult=window.StatsCalculator.calculate($('calcInput').value,calcResult);$('calcInput').value=String(Number(calcResult.toPrecision(13)));justCalculated=true;$('calcMessage').textContent='Result. Keep your working on paper.';}catch(e){$('calcMessage').textContent=e.message;}}
+function calcKey(key){if(!canCalc())return;const input=$('calcInput');if(key==='='){equals();input.focus();return;}let a=input.selectionStart??input.value.length,b=input.selectionEnd??a;if(key==='C'){input.value='';justCalculated=false;input.focus();return;}if(justCalculated&&/^[0-9.(]$/.test(key)){input.value='';a=b=0;}justCalculated=false;if(key==='⌫'){if(a===b&&a>0)a--;input.setRangeText('',a,b,'end');}else if(input.value.length-(b-a)+key.length<=140)input.setRangeText(key,a,b,'end');input.focus();}
+const keys=['C','⌫','(',')','7','8','9','÷','4','5','6','×','1','2','3','−','0','.','%','+','='],keyLabels={'C':'Clear calculation','⌫':'Backspace','(':'Open bracket',')':'Close bracket','÷':'Divide','×':'Multiply','−':'Subtract','+':'Add','%':'Percent: divide by 100','.':'Decimal point','=':'Equals'};
+$('calcKeys').innerHTML=keys.map(k=>`<button type="button" data-calc="${k}" class="${k==='='?'equals':'+−×÷%'.includes(k)?'op':''}" aria-label="${keyLabels[k]||k}">${k}</button>`).join('');
+$('calcKeys').querySelectorAll('button').forEach(b=>{b.addEventListener('pointerdown',e=>e.preventDefault());b.addEventListener('click',()=>calcKey(b.dataset.calc));});
+$('calcInput').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key==='='){e.preventDefault();equals();}else if(e.key==='Escape'){e.preventDefault();closeCalc(true);}else if(justCalculated&&!e.ctrlKey&&!e.metaKey&&/^[0-9.(]$/.test(e.key)){$('calcInput').value='';justCalculated=false;}else if(!['Shift','Control','Alt','Meta','Tab'].includes(e.key))justCalculated=false;});$('calcInput').addEventListener('input',()=>justCalculated=false);$('closeCalculator').addEventListener('click',()=>closeCalc(true));
+let drag=null;const panel=$('calculator'),handle=$('calcHandle');handle.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;const r=panel.getBoundingClientRect();drag={x:e.clientX-r.left,y:e.clientY-r.top};handle.setPointerCapture(e.pointerId);e.preventDefault();});handle.addEventListener('pointermove',e=>{if(!drag)return;panel.style.right='auto';panel.style.left=Math.max(8,Math.min(innerWidth-panel.offsetWidth-8,e.clientX-drag.x))+'px';panel.style.top=Math.max(8,Math.min(innerHeight-panel.offsetHeight-8,e.clientY-drag.y))+'px';});handle.addEventListener('pointerup',()=>drag=null);handle.addEventListener('pointercancel',()=>drag=null);function fitCalc(){if(panel.hidden)return;const r=panel.getBoundingClientRect();panel.style.right='auto';panel.style.left=Math.max(8,Math.min(innerWidth-panel.offsetWidth-8,r.left))+'px';panel.style.top=Math.max(8,Math.min(innerHeight-panel.offsetHeight-8,r.top))+'px';panel.style.maxHeight='calc(100dvh - 16px)';panel.style.overflowY='auto';}window.addEventListener('resize',fitCalc);
+$('areaSelect').insertAdjacentHTML('beforeend',E.AREAS.map(a=>`<option value="${esc(a.id)}">${esc(a.label)}</option>`).join(''));
+$('startButton').addEventListener('click',()=>{const id=$('areaSelect').value;if(!id){$('homeError').textContent='Choose a vocational area to begin.';$('areaSelect').focus();return;}state=A.start(id,Number($('sizeSelect').value));$('homeError').textContent='';displayQuestion();$('questionTitle')?.focus();});
+$('resumeButton').addEventListener('click',()=>{if(state?.finished||state?.resumeView==='report')renderReport();else displayQuestion();});
+$('homeButton').addEventListener('click',e=>{e.preventDefault();if(state){state.view='home';save();}renderHome();});
+$('pauseButton').addEventListener('click',()=>{state.view='home';save();renderHome();});
+$('reportButton').addEventListener('click',renderReport);$('definitionsButton').addEventListener('click',glossary);$('graphGuideButton').addEventListener('click',graphGuide);$('aboutButton').addEventListener('click',about);$('displayButton').addEventListener('click',()=>$('displayDialog').showModal());
+for(const id of ['themeSelect','overlaySelect','overlayStrength','textSelect'])$(id).addEventListener('input',()=>{prefs={theme:$('themeSelect').value,overlay:$('overlaySelect').value,strength:Number($('overlayStrength').value),text:$('textSelect').value};applyPrefs();save();});
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).close()));
+$('clearButton').addEventListener('click',()=>$('clearDialog').showModal());$('confirmClear').addEventListener('click',()=>{clearTimeout(saveTimer);state=null;try{localStorage.removeItem(STORAGE);}catch(_){}$('clearDialog').close();$('areaSelect').value='';renderHome();toast('Saved practice cleared.');});
+$('downloadButton').addEventListener('click',()=>downloadBlob(ORIGINAL_HTML,'text/html;charset=utf-8','Functional_Skills_Level_1_Statistics_Vocational.html'));
+document.addEventListener('contextmenu',e=>{if(state?.view==='question'&&!e.target.closest('input,select,textarea'))e.preventDefault();});
+document.addEventListener('keydown',e=>{if(state?.view!=='question'||document.querySelector('dialog[open]'))return;const k=e.key.toLowerCase();if(e.key==='F12'||((e.ctrlKey||e.metaKey)&&k==='u')||(e.ctrlKey&&e.shiftKey&&['i','j','c'].includes(k))||(e.metaKey&&e.altKey&&['i','j','u','c'].includes(k)))e.preventDefault();});
+window.addEventListener('beforeunload',save);
+load();applyPrefs();renderHome();
+})();
+
+</script>
+</body></html>
